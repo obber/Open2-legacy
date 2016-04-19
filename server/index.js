@@ -12,6 +12,7 @@ app.use(cors());
 router.post('/homepage', function(request, response){
   var username = request.body.username;
   var password = request.body.password;
+  console.log('this is post /homepage password, ', request.body)
 
 
   db.query('SELECT * FROM Users WHERE `username` = ?;', [username], function(err, rows) {
