@@ -3,7 +3,7 @@ var db = require('./db.js');
 var cors = require('cors');
 var bodyParser = require('body-parser');
 var router = express.Router();
-var bcrypt = require('bcrypt-nodejs');
+var bcrypt = require('bcrypt');
 
 var app = express();
 app.use(cors());
@@ -15,10 +15,10 @@ router.post('/homepage', function(request, response){
 
 
   db.query('SELECT * FROM Users WHERE `username` = ?;', [username], function(err, rows) {
-    console.log("This is our password in our db", rows[0].password)
-    var hash = bcrypt.hashSync(password);
+    // console.log("This is our password in our db", rows[0].password)
+    // var hash = bcrypt.hashSync(password);
 
-    console.log("This is the bcrypt pass true/false",bcrypt.compareSync( password ,rows[0].password ))
+    // console.log("This is the bcrypt pass true/false",bcrypt.compareSync( password ,rows[0].password ))
 
     if (err) {
       throw err;
