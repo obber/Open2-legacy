@@ -20,9 +20,9 @@ angular
         $location.path('/dashboard');
       })
       .catch(function(err){
-        $location.path('/');
         console.log(err);
-      })
+        $location.path('/');
+      });
     };
 
     // logout

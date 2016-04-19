@@ -17,10 +17,10 @@ angular
     };
 
     //remember the current username to use later
-  localStorage.setItem('username', $scope.username);
+    localStorage.setItem('username', $scope.username);
    
-   //login the user
-  Services.login(user);
+    //login the user
+    Services.login(user);
   };
 })
 

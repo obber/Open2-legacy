@@ -1,40 +1,40 @@
-@import url(http://fonts.googleapis.com/css?family=Vibur);
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
 * {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  font-family: arial;
 }
 
 body {
-  background: #FF9000;
+  background: #105277;
+  font-family: 'Source Sans Pro';
+}
 
+input, button {
+  font-family: 'Source Sans Pro';
 }
+
 .bodyColor2 {
-  background: #E86F42;
+  background: #105277;
 }
+
 .open {
   color: #FF4300;
   text-align: center;
-  font-family: 'Vibur', cursive;
   font-size: 40px;
 
 }
 /*.md-button {}*/
 
 .font {
-  font-family: 'Open Sans';
-
 }
+
 .dashQuestion {
-  font-family: 'Open Sans';
   font-size: 30px;
 }
 h1 {
   color:  #FF4500;
   text-align: center;
-  font-family: 'Vibur', cursive;
   font-size: 50px;
 }
 
@@ -66,14 +66,21 @@ float: right;
   padding: 30px;
 }
 
-.login-form {
+.logo-open2 {
+  background-image: url('../img/logo-white.png');
+  background-size: cover;
+  width: 102px;
+  height: 122px;
+  position: absolute;
+  left: 38%;
+  top: -150px;
+}
 
+.login-form {
   width: 350px;
-  padding: 40px 30px;
-  background: #eee;
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-  border-radius: 4px;
+  padding: 0px;
+  background-color: #fff;
+  border-radius: 5px;
   margin: auto;
   position: absolute;
   left: 0;
@@ -85,9 +92,25 @@ float: right;
   transform: translateY(-50%);
 }
 
+.login-form input {
+  background-color: #fff;
+  text-align: left;
+  width: 100%;
+  display: block;
+}
+
+.login-form label {
+  font-size: 16px;
+}
+
+.sign-up {
+  display: block;
+}
+
 .form-group {
   position: relative;
   margin-bottom: 15px;
+  padding: 25px;
 }
 
 .form-control {
@@ -102,6 +125,7 @@ float: right;
   -webkit-border-radius: 4px;
   border-radius: 4px;
 }
+
 .form-control:focus, .form-control:focus + .fa {
   border-color: #10CE88;
   color: #10CE88;

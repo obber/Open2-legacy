@@ -49,14 +49,14 @@ angular
   .config(function($routeProvider) {
     $routeProvider
     .when("/", {
-      templateUrl: 'login.html',
+      templateUrl: 'app/login/login.html',
       controller: 'loginCtrl'
     })
     .when('/dashboard', {
-      templateUrl: 'dashboard.html'
+      templateUrl: 'app/dashboard/dashboard.html'
     })
     .when('/signup', {
-      templateUrl: 'signup.html'
+      templateUrl: 'app/signup/signup.html'
     })
     .otherwise({
       redirectTo: '/'
