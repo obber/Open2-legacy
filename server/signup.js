@@ -22,6 +22,7 @@ router.post('/newuser', function(request, response){
     if(err){
       response.sendStatus(500);
     }else{
+      
       response.send('/login');
     }
   })

@@ -24,11 +24,81 @@ router.post('/events', function(request, response) {
     body: 'I am available to ' + event + " at " + timestamp
   });
 
+  //insert user inputevents into events and set event id to results.insertId
+  //query events table for this eventid and send id row to the front
+  //query users table for client username, and set id to rows[0].id
+  //insert this client and event into user events table.
+
+  //helper functions: 
+  //sendJSON
+  //getEventid
+  //getUserid
+  //addUserEvents(with eventid and userid)
+  
+  // function insertEvents(event, timestamp) {
+  //   return knex('events')
+  //   .insert({eventname : event, timestamp: timestamp});
+  //   .then(function(resp){
+  //     console.log('events inserted', resp);
+  //   })
+  // }
+
+  // function sendJSON(res, success, message, results) {
+  //   var response = {
+  //     success: success,
+  //     message: message
+  //     }
+
+  //   if (results) {
+  //     response.results = results;
+  //     }
+
+  //   res.json(response);
+  // }
+
+  // function getEventid(event,callback) {
+  //   return knex('Events')
+  //   .where(eventname : event)
+  //   .select(id)
+  //   .then(function(resp){
+  //     callback(resp.id);
+  //   })
+  // }
+
+  // function getUserid(username,callback){
+  //   return knex('Users')
+  //   .where('username',username)
+  //   .select(id)
+  //   .then(function(resp){
+  //     callback(resp.id);
+  //   })
+  // }
+
+  // function addUserEvents(userid , eventid , status) {
+  //   return knex('UserEvents')
+  //   .insert({user_id : userid, event_id: eventid, created_by: status})
+  //   .then(function(resp){
+  //     console.log('userid and eventid inserted into UserEvents table', resp);
+  //   })
+  // }  
+  
+  // insertEvents(event,timestamp)
+  // .then(function(resp){
+  //   console.log('events instered ', resp)
+  // }).catch(function(err){
+  //   console.log(err)
+  // })
+
+  // getUserid(username,function())
+
+
+
   db.query('INSERT INTO Events SET ?', events, function(err, results){
     if (err) {
       response.sendStatus(500);
     }else{
       var eventId = results.insertId;
+     //what is results.insertId? from table? 
 
       db.query('SELECT * FROM Events WHERE `id` = ?;', [eventId], function(err, rows){
         if(err){
@@ -51,6 +121,7 @@ router.post('/events', function(request, response) {
   });
 })
 
+//insert body.user and eventid, and status into userEvents table
 var addUserEvents = function(creator, eventId, status){
   var userEvents = {user_id: creator, event_id: eventId, created_by: status};
   console.log(userEvents)
@@ -63,6 +134,7 @@ var addUserEvents = function(creator, eventId, status){
   });
 }
 
+//upon get upload, sending the whole row of username, eventname, timestamp, etc.... omg
 router.get('/upload', function(request, response){
 
   db.query('SELECT Users.username, Events.eventname, Events.timestamp, UserEvents.id, UserEvents.created_by FROM Users INNER JOIN UserEvents ON Users.id = UserEvents.user_id INNER JOIN Events ON Events.id = UserEvents.event_id ORDER BY event_id', function(err, rows){
@@ -77,6 +149,7 @@ router.get('/upload', function(request, response){
 
 })
 
+//upon get friends send users including the client(need fix) from user table and send back. 
 router.get('/friends', function(request, response){
   db.query('SELECT username FROM Users', function(err, results){
     if(err){
@@ -88,6 +161,13 @@ router.get('/friends', function(request, response){
   })
 })
 
+//need to make function grabbing body username
+//query user table for this username and get ID
+//query userevents table for body event id, set event id to event id from userevents table
+//insert userid, join event id into user events table
+//what's the point of this? 
+//todo: need to understand what this post is doing
+//helper functions:
 router.post('/join', function(request, response){
   var username = request.body.user;
   var id = request.body.eventId;
