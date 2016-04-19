@@ -1,0 +1,14 @@
+
+<div class="login-form">
+  <div class="logo-open2"></div>
+  <div class="form-group" ng-controller = "loginCtrl">
+    <form action="/" id="myLogin">
+      <label for="username">Username</label>
+      <input type="text" name="username" ng-model="username"placeholder="Username">
+      <label for="password">Password</label>
+      <input type="password" name="password"ng-model="password" placeholder="Password">
+      <button ng-click="submit()">Sign In</button>
+      <button class="sign-up" ng-click="redirectSignup()">Sign Up!</button>
+    </form>
+  </div>
+</div>
