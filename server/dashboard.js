@@ -141,7 +141,7 @@ router.get('/upload', function(request, response){
     if(err){
       throw err;
     }else{
-      console.log("query from database", rows);
+      // console.log("query from database", rows);
       response.send(rows);
 
     }
@@ -155,7 +155,7 @@ router.get('/friends', function(request, response){
     if(err){
       throw err;
     }else{
-      console.log("friends list from db", results);
+      // console.log("friends list from db", results);
       response.send(results);
     }
   })
