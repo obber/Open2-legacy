@@ -23,7 +23,7 @@ angular
       .primaryPalette('Open2Pallete')
   })
 
-  //NOTIFICATION BOX
+  // NOTIFICATION BOX
   .config(function($mdThemingProvider) {
     $mdThemingProvider.definePalette('ojo', {
       '50': '#fffefe',

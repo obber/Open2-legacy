@@ -1,0 +1,37 @@
+body {
+	background-color: lavender;
+}
+
+#sidebar {
+	height: 1000px;
+	width: 580px;
+	background-color: white;
+
+	ul {
+		padding: 0px;
+	}
+
+	#newEvent {
+		min-width: 250px;
+		margin-left: 145px;
+		margin-top: 0px;
+	}
+
+	#logout {
+		float: right;
+	}
+
+	h1 {
+		font-size: 36px;
+		background-color: white;
+		margin-bottom: 7px;
+		background-color: pink;
+	}
+
+	#title {
+	  color: #FF4300;
+	  text-align: center;
+	  font-size: 40px;
+	}
+
+}
