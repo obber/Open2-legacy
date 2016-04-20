@@ -16,9 +16,9 @@ router.post('/newuser', function(req, res) {
   var password = req.body.password;
   var hashedPass = bcrypt.hashSync(password, 10);
   var user = { username: username, password: hashedPass};
-
+  var helper = require('./helpers.js');
   // add helper functions to clean up code if time permits
-  doesUserExist(username).then(function(resp){
+  helper.doesUserExist(username).then(function(resp){
     console.log('this is the resp', resp);
     var result=false;
     resp.forEach(function(currentEl){
@@ -34,7 +34,7 @@ router.post('/newuser', function(req, res) {
       });
     } else {
         console.log('inside else');
-        insertUser(user).then(function(resp){
+        helper.insertUser(user).then(function(resp){
         console.log('inside insertUser');
         res.json({
           success : ('/login'),
@@ -49,26 +49,4 @@ router.post('/newuser', function(req, res) {
   });
 });
 
-
-function doesUserExist(user){
-  return new Promise(function(resolve, reject) {
-    db.query('SELECT username FROM Users', function(err,rows){
-      resolve(rows);
-    });
-  });
-}
-
-function insertUser(user) {
-  return new Promise(function(resolve, reject){
-    db.query('INSERT INTO Users SET ?', user, function (err, results){
-      console.log('this is insertuser results',results);
-      resolve(results);
-    });
-  });
-}
-
-function validate(user) {
-  console.log(user);
-  return user.username && user.password;
-}
 module.exports = router;

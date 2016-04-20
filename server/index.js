@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 var router = express.Router();
 var bcrypt = require('bcrypt');
 var signup = require('./signup.js');
+var helper = require('./helpers.js');
 
 var app = express();
 app.use(cors());
@@ -14,7 +15,7 @@ router.post('/homepage', function(req, res){
   var username = req.body.username;
   var password = req.body.password;
 
-  auth(username, password).then(function(resp){
+  helper.auth(username, password).then(function(resp){
     var result = false;
     if(resp[0].username===username && bcrypt.compareSync(password, resp[0].password)){
         result = true;
@@ -34,13 +35,5 @@ router.post('/homepage', function(req, res){
     console.log('unexpected error: ', err);
   });
 });
-
-function auth(user, pw){
-  return new Promise(function(resolve, reject){
-    db.query('SELECT * FROM Users WHERE username = ?',[user],function(err, query){
-      resolve(query);
-    });
-  });
-}
 
 module.exports = router;
