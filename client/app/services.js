@@ -17,13 +17,12 @@ angular
         data: user
       })
       .then(function(resp){
-        $location.path('/dashboard');
-        //remember the current username to use later
-        localStorage.setItem('username', user.username);
-      })
-      .catch(function(err){
-        console.log(err);
-        $location.path('/');
+        if(resp.data.success === true){
+          $location.path('/dashboard');
+        }
+        else {
+          $location.path('/login');
+        }
       });
     };
 
