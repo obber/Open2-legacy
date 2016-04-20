@@ -5,6 +5,8 @@ angular
 	// signup controller
   .controller('signupCtrl', function($scope, Services, $location) {
 
+  $scope.pageClass = "signup auth";
+
   $scope.submit = function() {
     var user = {
       username: $scope.username,

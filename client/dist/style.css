@@ -124,7 +124,6 @@ h1 {
 .form-group {
   text-align: center;
   position: relative;
-  margin-bottom: 15px;
   padding: 25px; }
 
 .form-control {
@@ -270,7 +269,7 @@ h1 {
 .auth-form {
   width: 350px;
   padding: 0px;
-  background-color: #fff;
+  background-color: #fdfdfd;
   border-radius: 5px;
   margin: auto;
   position: absolute;
@@ -302,16 +301,19 @@ h1 {
     background-color: #57B53E;
     color: #fff;
     font-weight: 700;
-    box-shadow: 0 3px 0 0 #43942C;
+    box-shadow: 0 2px 0 0 #43942C;
     margin-bottom: 30px;
     text-shadow: 0 1px 0 #43942C; }
   .auth-form button:hover {
     background-color: #67C44F; }
   .auth-form button:active {
     position: relative;
-    top: 3px;
+    top: 4px;
     background-color: #4DA336;
-    box-shadow: 0 -3px 0 #3A782A; }
+    box-shadow: 0 -2px 0 #3A782A, inset 0 -2px 0 #fff; }
+    .auth-form button:active span {
+      position: relative;
+      top: -2px; }
 
 .signup-link {
   text-align: center; }
