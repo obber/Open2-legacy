@@ -50,77 +50,6 @@ h1 {
   float: left;
   padding: 30px; }
 
-.logo-open2 {
-  background-image: url("../img/logo-white.png");
-  background-size: cover;
-  width: 102px;
-  height: 122px;
-  position: absolute;
-  left: 38%;
-  top: -150px; }
-
-.login-form {
-  width: 350px;
-  padding: 0px;
-  background-color: #fff;
-  border-radius: 5px;
-  margin: auto;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 35%; }
-
-.login-form input {
-  background-color: #fff;
-  text-align: left;
-  width: 100%;
-  display: block;
-  outline: 0;
-  border: 0px;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  padding: 12px 12px 12px 38px;
-  margin-bottom: 18px; }
-
-.input-container {
-  position: relative; }
-
-.input-container .login-icon {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  color: #ccc; }
-
-.login-form input:focus {
-  border: 1px solid #82BAD9; }
-
-.login-form label {
-  font-size: 16px; }
-
-.login-form button {
-  border: 0;
-  outline: 0;
-  display: block;
-  width: 100%;
-  padding: 13px;
-  border-radius: 3px;
-  background-color: #57B53E;
-  color: #fff;
-  font-weight: 700;
-  box-shadow: 0 3px 0 0 #43942C;
-  margin-bottom: 30px;
-  text-shadow: 0 1px 0 #43942C; }
-
-.login-form button:hover {
-  background-color: #67C44F; }
-
-.login-form button:active {
-  border: 0;
-  outline: 0; }
-
-.signup-link {
-  text-align: center; }
-
 .form-group {
   text-align: center;
   position: relative;
@@ -242,9 +171,6 @@ h1 {
   color: #dd2c00;
   margin: 10px 0 0 25px; }
 
-body {
-  background-color: lavender; }
-
 #sidebar {
   top: 0;
   left: 0;
@@ -287,7 +213,7 @@ body {
   width: 102px;
   height: 122px;
   position: absolute;
-  left: 38%;
+  left: 36.5%;
   top: -160px; }
 
 .auth-label {
@@ -356,3 +282,84 @@ body {
 
 .signup-link {
   text-align: center; }
+
+.loading {
+  background-color: rgba(255, 255, 255, 0.6);
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px; }
+
+.spinner {
+  margin: 130px auto;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  text-align: center;
+  -webkit-animation: sk-rotate 2.0s infinite linear;
+  animation: sk-rotate 2.0s infinite linear; }
+
+.dot1, .dot2 {
+  width: 60%;
+  height: 60%;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  background-color: #105277;
+  border-radius: 100%;
+  -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+  animation: sk-bounce 2.0s infinite ease-in-out; }
+
+.dot2 {
+  top: auto;
+  bottom: 0;
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s; }
+
+@-webkit-keyframes sk-rotate {
+  100% {
+    -webkit-transform: rotate(360deg); } }
+
+@keyframes sk-rotate {
+  100% {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg); } }
+
+@-webkit-keyframes sk-bounce {
+  0%, 100% {
+    -webkit-transform: scale(0); }
+  50% {
+    -webkit-transform: scale(1); } }
+
+@keyframes sk-bounce {
+  0%, 100% {
+    transform: scale(0);
+    -webkit-transform: scale(0); }
+  50% {
+    transform: scale(1);
+    -webkit-transform: scale(1); } }
+
+/* slide in from the right */
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+/* slide in from the bottom */
+@keyframes fadeOut {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
+
+.ng-enter {
+  animation: fadeIn 0.3s both ease-in;
+  z-index: 8888; }
+
+.ng-leave {
+  animation: fadeOut 0.1s both ease-in;
+  z-index: 9999; }

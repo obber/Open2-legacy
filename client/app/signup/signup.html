@@ -1,6 +1,15 @@
 <div class="auth-form signup-form">
   <div class="logo-open2"></div>
   <div class="form-group" ng-controller="signupCtrl">
+
+  <!-- Loading Spinner -->
+  <div class="loading" ng-show="loading">
+    <div class="spinner">
+      <div class="dot1"></div>
+      <div class="dot2"></div>
+    </div>
+  </div>
+
     <p class="auth-label">Sign Up</p>
     <div class="input-container">
       <input type="text" name="username" ng-model="username" placeholder="Username">
