@@ -3,7 +3,7 @@ var db = require('./db.js');
 var bcrypt = require('bcrypt');
 var cors = require('cors');
 var bodyParser = require('body-parser');
-//var knex = require('knex');
+var auth = require('./auth.js');
 
 var router = express.Router();
 
@@ -33,12 +33,11 @@ router.post('/newuser', function(req, res) {
           message : 'username already exists!'
       });
     } else {
-        console.log('inside else');
         helper.insertUser(user).then(function(resp){
-        console.log('inside insertUser');
         res.json({
           success : ('/login'),
-          message : 'User inserted into database'
+          message : 'User inserted into database',
+          token : auth.genToken(user)
         });
         }).catch(function(err){
           console.log('err inserting user into database');
