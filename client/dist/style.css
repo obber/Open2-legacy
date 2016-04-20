@@ -242,3 +242,76 @@ h1 {
   font-size: 12px;
   color: #dd2c00;
   margin: 10px 0 0 25px; }
+
+.logo-open2 {
+  background-image: url("../img/logo-white.png");
+  background-size: cover;
+  width: 102px;
+  height: 122px;
+  position: absolute;
+  left: 38%;
+  top: -160px; }
+
+.auth-label {
+  margin: 0;
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: #999; }
+
+.input-container {
+  position: relative; }
+
+.input-container .login-icon {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  color: #ccc; }
+
+.auth-form {
+  width: 350px;
+  padding: 0px;
+  background-color: #fff;
+  border-radius: 5px;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 30%; }
+  .auth-form input {
+    background-color: #fff;
+    text-align: left;
+    width: 100%;
+    display: block;
+    outline: 0;
+    border: 0px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 12px 12px 12px 38px;
+    margin-bottom: 18px; }
+  .auth-form input:focus {
+    border: 1px solid #82BAD9; }
+  .auth-form label {
+    font-size: 16px; }
+  .auth-form button {
+    border: 0;
+    outline: 0;
+    display: block;
+    width: 100%;
+    padding: 13px;
+    border-radius: 3px;
+    background-color: #57B53E;
+    color: #fff;
+    font-weight: 700;
+    box-shadow: 0 3px 0 0 #43942C;
+    margin-bottom: 30px;
+    text-shadow: 0 1px 0 #43942C; }
+  .auth-form button:hover {
+    background-color: #67C44F; }
+  .auth-form button:active {
+    position: relative;
+    top: 3px;
+    background-color: #4DA336;
+    box-shadow: 0 -3px 0 #3A782A; }
+
+.signup-link {
+  text-align: center; }
