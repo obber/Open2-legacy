@@ -3,7 +3,9 @@
 angular
   .module('myApp')
 	// signup controller
-  .controller('signupCtrl', function($scope, Services, $location) {
+  .controller('signupCtrl', function($rootScope, $scope, Services, $location) {
+
+  $rootScope.bodyClass = "bluebg";
 
   $scope.pageClass = "signup auth";
   $scope.loading = false;
