@@ -3,27 +3,32 @@
 angular
   .module('myApp')
   /// factory for get/post requests
-  .factory('Services', function($http, $location) {
+  .factory('Services', function($http, $window, $location) {
     var username;
-
+    var baseUrl = 'http://localhost:8080/';
      // login
     var login = function(user) {
-      console.log('data:user is', user);
-      username = user.username;
-      console.log('services username inside signup', username);
-      return $http({
-        method: 'POST',
-        url: 'http://localhost:8080/index/homepage',
-        data: user
-      })
-      .then(function(resp){
-        if(resp.data.success === true){
+      var request={
+        method : 'POST',
+        url : baseUrl+'index/homepage',
+        data : user
+      }
+      
+      return $http(request).then(success, err);
+
+      function success(resp){
+        console.log('inside login front end', " ", resp);
+        if(resp.data.token){
+          saveToken(resp.data.token);
           $location.path('/dashboard');
         }
-        else {
-          $location.path('/login');
-        }
-      });
+        return resp;
+      }
+
+      function err(err){
+        $location.path('/login');
+        return console.log(err);
+      }
     };
 
     // logout
@@ -34,21 +39,38 @@ angular
 
     // signup
     var signup = function(user) {
-      return $http({
-        method: 'POST',
-        url: 'http://localhost:8080/signup/newuser',
-        data: user
-      })
-      .then(function(resp){
-        $location.path('/login');
-      })
-      .catch(function(err){
-        $location.path('/');
-        console.log(err);
-      })
-    };
+      var request= {
+        method : 'POST',
+        url : baseUrl+'signup/newuser',
+        data : user
+      }
+      
+      return $http(request).then(success, err);
+      
+      function success(resp){
+        if(resp.data.token){
+          saveToken(resp.data.token);
+          $location.path('/login');
+        }
+        return resp;
+      };
 
+      function err(err){
+        $location.path('/');
+        return console.log(err);
+        }
+      };
+
+    function saveToken(token){
+      $window.localStorage['jwtToken'] = token;
+    }
+
+    function getToken(){
+      return $window.localStorage['jwtToken'];
+    }
      // get the event info from database 
+    
+
     var uploadDashboard = function() {
       return $http({
         method: 'GET',
