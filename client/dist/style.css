@@ -1,58 +1,42 @@
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
-
 * {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-}
+  -webkit-box-sizing: border-box; }
 
 body {
   background: #105277;
-  font-family: 'Source Sans Pro';
-}
+  font-family: 'Source Sans Pro'; }
 
 input, button {
-  font-family: 'Source Sans Pro';
-}
+  font-family: 'Source Sans Pro'; }
 
 .bodyColor2 {
-  background: #105277;
-}
+  background: #105277; }
 
 .open {
   color: #FF4300;
   text-align: center;
-  font-size: 40px;
+  font-size: 40px; }
 
-}
 /*.md-button {}*/
-
-.font {
-}
-
 .dashQuestion {
-  font-size: 30px;
-}
+  font-size: 30px; }
+
 h1 {
-  color:  #FF4500;
+  color: #FF4500;
   text-align: center;
-  font-size: 50px;
-}
+  font-size: 50px; }
 
 #eventContainer {
-position: relative;
-float: right;
+  position: relative;
+  float: right; }
 
-}
 #eventsIgoTo {
-  width : 48%;
-   border: 1px solid black;
-
+  width: 48%;
+  border: 1px solid black;
   float: right;
- padding: 30px;
-
-
-}
+  padding: 30px; }
 
 /*#eventsList {
 
@@ -61,21 +45,19 @@ float: right;
 }
 */
 #eventsList {
-  width : 48%;
+  width: 48%;
   border: 1px solid black;
   float: left;
-  padding: 30px;
-}
+  padding: 30px; }
 
 .logo-open2 {
-  background-image: url('../img/logo-white.png');
+  background-image: url("../img/logo-white.png");
   background-size: cover;
   width: 102px;
   height: 122px;
   position: absolute;
   left: 38%;
-  top: -150px;
-}
+  top: -150px; }
 
 .login-form {
   width: 350px;
@@ -86,8 +68,7 @@ float: right;
   position: absolute;
   left: 0;
   right: 0;
-  top: 35%;
-}
+  top: 35%; }
 
 .login-form input {
   background-color: #fff;
@@ -99,27 +80,22 @@ float: right;
   border: 1px solid #ddd;
   border-radius: 3px;
   padding: 12px 12px 12px 38px;
-  margin-bottom: 18px;
-}
+  margin-bottom: 18px; }
 
 .input-container {
-  position: relative;
-}
+  position: relative; }
 
 .input-container .login-icon {
   position: absolute;
   top: 15px;
   left: 15px;
-  color: #ccc;
-}
+  color: #ccc; }
 
 .login-form input:focus {
-  border: 1px solid #82BAD9;
-}
+  border: 1px solid #82BAD9; }
 
 .login-form label {
-  font-size: 16px;
-}
+  font-size: 16px; }
 
 .login-form button {
   border: 0;
@@ -133,28 +109,23 @@ float: right;
   font-weight: 700;
   box-shadow: 0 3px 0 0 #43942C;
   margin-bottom: 30px;
-  text-shadow: 0 1px 0 #43942C;
-}
+  text-shadow: 0 1px 0 #43942C; }
 
 .login-form button:hover {
-  background-color: #67C44F;
-}
+  background-color: #67C44F; }
 
 .login-form button:active {
   border: 0;
-  outline: 0;
-}
+  outline: 0; }
 
 .signup-link {
-  text-align: center;
-}
+  text-align: center; }
 
 .form-group {
   text-align: center;
   position: relative;
   margin-bottom: 15px;
-  padding: 25px;
-}
+  padding: 25px; }
 
 .form-control {
   width: 100%;
@@ -166,24 +137,20 @@ float: right;
   border: 2px solid #ddd;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
-  border-radius: 4px;
-}
+  border-radius: 4px; }
 
 .form-control:focus, .form-control:focus + .fa {
   border-color: #10CE88;
-  color: #10CE88;
-}
+  color: #10CE88; }
 
 .log-status.wrong-entry {
   -moz-animation: wrong-log 0.3s;
   -webkit-animation: wrong-log 0.3s;
-  animation: wrong-log 0.3s;
-}
+  animation: wrong-log 0.3s; }
 
 .log-status.wrong-entry .form-control, .wrong-entry .form-control + .fa {
   border-color: #ed1c24;
-  color: #ed1c24;
-}
+  color: #ed1c24; }
 
 .log-btn {
   background: #0AC986;
@@ -196,91 +163,82 @@ float: right;
   border: none;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
-  border-radius: 4px;
-}
+  border-radius: 4px; }
 
 .link {
   text-decoration: none;
   color: #C6C6C6;
   float: right;
   font-size: 12px;
-  margin-bottom: 15px;
-}
+  margin-bottom: 15px; }
+
 .link:hover {
   text-decoration: underline;
-  color: #8C918F;
-}
+  color: #8C918F; }
 
 .alert {
   display: none;
   font-size: 12px;
   color: #f00;
-  float: left;
-}
+  float: left; }
 
 @-moz-keyframes wrong-log {
   0%, 100% {
-    left: 0px;
-  }
-  20% , 60% {
-    left: 15px;
-  }
-  40% , 80% {
-    left: -15px;
-  }
-}
+    left: 0px; }
+  20%, 60% {
+    left: 15px; }
+  40%, 80% {
+    left: -15px; } }
+
 @-webkit-keyframes wrong-log {
   0%, 100% {
-    left: 0px;
-  }
-  20% , 60% {
-    left: 15px;
-  }
-  40% , 80% {
-    left: -15px;
-  }
-}
+    left: 0px; }
+  20%, 60% {
+    left: 15px; }
+  40%, 80% {
+    left: -15px; } }
+
 @keyframes wrong-log {
   0%, 100% {
-    left: 0px;
-  }
-  20% , 60% {
-    left: 15px;
-  }
-  40% , 80% {
-    left: -15px;
-  }
-}
+    left: 0px; }
+  20%, 60% {
+    left: 15px; }
+  40%, 80% {
+    left: -15px; } }
 
-.friendsNames{
+.friendsNames {
   color: #ffa500;
-  font-size: 30px;
-}
+  font-size: 30px; }
 
-.friendsNames:hover{
+.friendsNames:hover {
   background-color: lightblue;
-  opacity: 0.4;
-}
+  opacity: 0.4; }
 
 .dialogdemoBasicUsage #popupContainer {
   position: relative; }
+
 .dialogdemoBasicUsage .footer {
   width: 100%;
   text-align: center;
   margin-left: 20px; }
+
 .dialogdemoBasicUsage .footer, .dialogdemoBasicUsage .footer > code {
   font-size: 0.8em;
   margin-top: 50px; }
+
 .dialogdemoBasicUsage button {
   width: 200px; }
+
 .dialogdemoBasicUsage div#status {
   color: #c60008; }
 
-  .datepickerdemoBasicUsage {
+.datepickerdemoBasicUsage {
   /** Demo styles for mdCalendar. */ }
-  .datepickerdemoBasicUsage md-content {
-    padding-bottom: 200px; }
-  .datepickerdemoBasicUsage .validation-messages {
-    font-size: 12px;
-    color: #dd2c00;
-    margin: 10px 0 0 25px; }
+
+.datepickerdemoBasicUsage md-content {
+  padding-bottom: 200px; }
+
+.datepickerdemoBasicUsage .validation-messages {
+  font-size: 12px;
+  color: #dd2c00;
+  margin: 10px 0 0 25px; }
