@@ -3,7 +3,10 @@
 angular
   .module('myApp')
   // dashboard controller
-  .controller('dashboardCtrl', function($scope, Services,$mdDialog, $mdMedia, $route, $sce) {
+  .controller('dashboardCtrl', function($rootScope, $scope, Services,$mdDialog, $mdMedia, $route, $sce) {
+
+  $rootScope.bodyClass = "whitebg";
+
   $scope.events = {};
 
   //// start uploading dashboard

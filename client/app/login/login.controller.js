@@ -3,7 +3,9 @@
 angular 
   .module('myApp')
   // login controller
-  .controller('loginCtrl', function($scope, Services, $location) {
+  .controller('loginCtrl', function($rootScope, $scope, Services, $location) {
+
+  $rootScope.bodyClass = "bluebg";
   
   $scope.pageClass = "login auth";
   $scope.loading = false;
