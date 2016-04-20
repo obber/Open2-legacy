@@ -18,6 +18,8 @@ angular
       })
       .then(function(resp){
         $location.path('/dashboard');
+        //remember the current username to use later
+        localStorage.setItem('username', user.username);
       })
       .catch(function(err){
         console.log(err);
