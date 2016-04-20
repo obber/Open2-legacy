@@ -1,6 +1,16 @@
 <div class="auth-form login-form">
   <div class="logo-open2"></div>
   <div class="form-group" ng-controller = "loginCtrl">
+
+    <!-- Loading Spinner -->
+    <div class="loading" ng-show="loading">
+      <div class="spinner">
+        <div class="dot1"></div>
+        <div class="dot2"></div>
+      </div>
+    </div>
+
+    <!-- Form -->
     <p class="auth-label">Login</p>
     <div class="input-container">
       <input type="text" name="username" ng-model="username" placeholder="Username">
@@ -12,5 +22,6 @@
     </div>
     <button class="login-button" ng-click="submit()"><span>Log In</span></button>
     Don't have an account?&nbsp;<a href="" class="signup-link" ng-click="redirectSignup()">Sign Up</a>&nbsp;<i class="fa fa-angle-double-right" aria-hidden="true"></i>
+    
   </div>
 </div>
