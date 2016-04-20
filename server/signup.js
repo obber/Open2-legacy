@@ -17,7 +17,6 @@ router.post('/newuser', function(req, res) {
   var hashedPass = bcrypt.hashSync(password, 10);
   var user = { username: username, password: hashedPass};
   var helper = require('./helpers.js');
-  // add helper functions to clean up code if time permits
   helper.doesUserExist(username).then(function(resp){
     console.log('this is the resp', resp);
     var result=false;

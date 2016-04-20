@@ -6,9 +6,7 @@ angular
     .controller('AppCtrl', function ($scope, $timeout, Services, $mdSidenav, $log) {
     $scope.toggleLeft = buildDelayedToggler('left');
     $scope.toggleRight = buildToggler('right');
-    $scope.logout = function(){
-      Services.logout();
-    }
+    $scope.logout = Services.logout;
     $scope.isOpenRight = function(){
       return $mdSidenav('right').isOpen();
     };
