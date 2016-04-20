@@ -1,17 +1,16 @@
-<div class="login-form">
-  <h1>Open2</h1>
-  <div>Sign Up Now!</div>
-  <div class="form-group" ng-controller = "signupCtrl">
-    <form action="/" id="myLogin">
-    <md-input-container md-no-float="" class="md-block">
-    <input class="login-form" type="text" name="username" ng-model="username"placeholder="Username">
-    </md-input-container>
-    <md-input-container md-no-float="" class="md-block">
-    <input type="password" name="password"ng-model="password" placeholder="Password">
-    </md-input-container>
-
-    <md-button class="md-warn md-raised md-hue-2"  ng-click="submit()" aria-label="Eat cake"> Sign Up!
-    </md-button>
-    </form>
+<div class="auth-form signup-form">
+  <div class="logo-open2"></div>
+  <div class="form-group" ng-controller="signupCtrl">
+    <p class="auth-label">Sign Up</p>
+    <div class="input-container">
+      <input type="text" name="username" ng-model="username" placeholder="Username">
+      <i class="fa fa-user login-icon" aria-hidden="true"></i>
+    </div>
+    <div class="input-container">
+      <input type="password" name="password "ng-model="password" placeholder="Password">
+      <i class="fa fa-lock login-icon" aria-hidden="true"></i>
+    </div>
+    <button ng-click="submit()" aria-label="Eat cake"><span>Sign Up!</span></button>
+    <i class="fa fa-angle-double-left" aria-hidden="true"></i>&nbsp;<a href="" class="signup-link" ng-click="redirectToLogin()">Back to Login</a>
   </div>
 </div>

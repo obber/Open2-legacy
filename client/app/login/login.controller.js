@@ -5,6 +5,8 @@ angular
   // login controller
   .controller('loginCtrl', function($scope, Services, $location) {
   
+  $scope.pageClass = "login auth";
+
   $scope.redirectSignup = function(e) {
     $location.path('/signup');
   };

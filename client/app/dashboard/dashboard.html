@@ -1,3 +1,15 @@
+ <head>
+  <meta charset='utf-8'/>
+  <script>
+    var app = {};
+  </script>
+
+
+</head>
+
+
+
+
 <div ng-controller="AppCtrl">
   <button ng-click="logout()" id="logout">Logout</button>
 </div>
@@ -8,12 +20,11 @@
 
   <ul ng-controller = 'dashboardCtrl'>
   <!-- event button -->
-  <md-button class="md-primary md-raised newEvent" id="newEvent" ng-click="showAdvanced($event)"> New Event </md-button>
+  <button id="newEvent" ng-click="showAdvanced($event)"> New Event </button>
 
   <h1 class="title"> My Events </h1>
 
 <!-- Notification Box -->
-  <div ng-controller='dashboardCtrl'>
     <div ng-if='events.fetch'>
 
 
@@ -22,5 +33,24 @@
 
 
     </div>
-  </div>
+  </ul>
+</div>
+
+<div id='contentWrapper'>
+
+  <div id='firechat-wrapper' ng-controller='chatCtrl'>
+
+    <a href='#' ng-click='login()'>Login</a>
+      <div id="chat">
+        <div id="messageContainer">
+          <ul id="example-messages">
+          </ul>
+        </div>
+        <span class="chat-user">{{ username }}</span>
+        <input type="text" id="messageInput" placeholder="Enter message here">
+        <button>Submit</button>
+      </div>
+
+  <div>
+
 </div>

@@ -56,7 +56,8 @@ angular
       templateUrl: 'app/dashboard/dashboard.html'
     })
     .when('/signup', {
-      templateUrl: 'app/signup/signup.html'
+      templateUrl: 'app/signup/signup.html',
+      controller: 'signupCtrl'
     })
     .otherwise({
       redirectTo: '/'
