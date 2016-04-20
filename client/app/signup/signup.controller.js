@@ -5,7 +5,7 @@ angular
 	// signup controller
   .controller('signupCtrl', function($rootScope, $scope, Services, $location) {
 
-  $rootScope.bodyClass = "bluebg";
+  $rootScope.bodyClass = "bluebg no-scroll";
 
   $scope.pageClass = "signup auth";
   $scope.loading = false;

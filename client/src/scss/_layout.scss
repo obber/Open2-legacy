@@ -2,17 +2,23 @@
 // 	background-color: lavender;
 // }
 
+$topbar: 60px;
+
 .admin-bar {
+	text-align: center;
+	position: relative;
 	background-color: $blue;
+	height: $topbar;
 }
 
 #sidebar {
-	top: 25px;
+	top: $topbar;
 	left: 0;
 	position: fixed;
 	height: 100%;
 	width: 25%;
 	background-color: white;
+	overflow-y: auto;
 
 	ul {
 		padding: 0px;

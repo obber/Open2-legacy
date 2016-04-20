@@ -1,6 +1,7 @@
 @import 'colors';
 @import 'typography';
 @import 'mixins';
+@import 'globals';
 
 @import 'main';
 @import 'layout';
@@ -9,3 +10,5 @@
 @import 'signup';
 @import 'spinner';
 @import 'animations';
+
+@import 'dashboard';
