@@ -8,6 +8,11 @@ angular
   $rootScope.bodyClass = "whitebg";
 
   $scope.events = {};
+  $scope.expand1 = false;
+
+  $scope.toggleExpand = function(n) {
+    $scope['expand' + n] = !$scope['expand' + n];
+  }
 
   //// start uploading dashboard
   Services.uploadDashboard()
