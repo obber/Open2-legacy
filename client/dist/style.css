@@ -492,3 +492,7 @@ md-backdrop.md-opaque.ng-enter-active {
 #chat {
   width: 100%;
   height: 400px; }
+
+#messageContainer {
+  height: 500px;
+  overflow: auto; }
