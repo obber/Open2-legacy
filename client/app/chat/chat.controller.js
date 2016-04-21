@@ -21,10 +21,14 @@
 
           //SAVE DATA TO FIREBASE AND EMPTY FIELD
           var timeString = Date.parse(new Date()).toString();
-          ref.push({name:username, text:message, time: timeString });
-          messageField.val('');
-        }
-      });
+          if (message.length === 0) {
+            alert('Message field cannot be empty.')
+          } else {
+            ref.push({name:username, text:message, time: timeString });
+            messageField.val('');
+          }
+         }
+        });
 
       $('#submit').on("click", function(){ 
         //FIELD VALUES
@@ -33,8 +37,12 @@
 
         //SAVE DATA TO FIREBASE AND EMPTY FIELD
         var timeString = Date.parse(new Date()).toString();
-        ref.push({name:username, text:message, time: timeString });
-        messageField.val('');
+        if (message.length === 0) {
+          alert('Message field cannot be empty.')
+        } else {
+          ref.push({name:username, text:message, time: timeString });
+          messageField.val('');
+        }
        });
 
 
@@ -45,21 +53,22 @@
         var username = data.name || 'anonymous';
         var message = data.text;
         var time = data.time ? new Date(Number(data.time)).toTimeString() : '';
-        console.log('time is',time);
-        console.log('data.timeString', data.time);
+        console.log('username =', username);
 
 
         //CREATE ELEMENTS MESSAGE & SANITIZE TEXT
-        var messageElement = $("<p>");
-        var nameElement = $("<strong class='example-chat-username'></strong>:")
-        nameElement.html(username + ' ' + time + ': ');
-        messageElement.text(message).prepend(nameElement);
+        if (username !== 'anonymous') {
+          var messageElement = $("<p>");
+          var nameElement = $("<strong class='example-chat-username'></strong>:")
+          nameElement.text(username + ' ' + time + ': ');
 
-        //ADD MESSAGE
-        messageList.append(messageElement)
+          messageElement.text(message).prepend(nameElement);
+
+          //ADD MESSAGE
+          messageList.append(messageElement)
+       }
 
         //SCROLL TO BOTTOM OF MESSAGE LIST
-         console.log('mssageList =', messageList);
         messageList[0].scrollTop = messageList[0].scrollHeight;
       });
 
