@@ -4,6 +4,7 @@ var cors = require('cors');
 var bodyParser = require('body-parser');
 var twilio = require('twilio')('AC40691c0816f7dd360b043b23331f4f43','89f0d01b69bb6bcc473724b5b232b6f4');
 var router = express.Router();
+var helper = require('./helpers.js');
 
 var app = express();
 app.use(cors());
@@ -168,28 +169,65 @@ router.get('/friends', function(request, response){
 //what's the point of this? 
 //todo: need to understand what this post is doing
 //helper functions:
-router.post('/join', function(request, response){
-  var username = request.body.user;
-  var id = request.body.eventId;
-
-  db.query('SELECT id FROM Users WHERE `username` = ?;', [username], function(err, rows){
-    if(err){
-      throw err;
-    }else{
-      console.log("INSIDE JOIN POST",rows[0].id);
-      var userId = rows[0].id;
-
-      db.query('SELECT event_id FROM UserEvents WHERE `id` = ?;', [id],function(err, rows){
-        if(err){
-          throw err;
-        }else{
-          console.log("INSIDE POST USEREVENts", rows[0].event_id);
-          var eventId = rows[0].event_id;
-          addUserEvents(userId, eventId, false);
-        }
-      })
-    }
+router.post('/join', function(req, res){
+  var username = req.body.user;
+  var eventid = req.body.eventId;
+  var userid;
+  
+  helper.getUserId(username)
+  .then(function(resp){
+    userid = resp[0].id;
+    return resp[0].id;
+    })
+  .then(function(resp){
+    helper.checkUserEvent(resp,eventid,false)
+    .then(function(resp){
+    return resp;
+    })
+  .then(function(resp){
+    if(resp.length !== 0){
+      console.log('inside join if');
+      res.json({
+          username : username,
+          success : false,
+          message : 'that event already exist!'
+          });
+    } else {
+      console.log('inside join else');
+      helper.insertEvent(userid,eventid,false)
+      .then(function(){
+        res.json({
+          username : username,
+          userid : userid,
+          eventid: eventid,
+          success : true,
+          message : 'you joined the event'
+          })
+        });
+      }
+    })
   })
+  
+
+  //db.query('SELECT id FROM Users WHERE `username` = ?;', [username], function(err, rows){
+  //   if(err){
+  //     throw err;
+  //   }else{
+  //     console.log("INSIDE JOIN POST",rows[0].id);
+  //     var userId = rows[0].id;
+  //     //is this really neccessary - - ? already have request.body. id 
+  //     db.query('SELECT event_id FROM UserEvents WHERE `id` = ?;', [id],function(err, rows){
+  //       if(err){
+  //         throw err;
+  //       }else{
+  //         console.log("INSIDE POST USEREVENts", rows[0].event_id);
+  //         console.log('this is database event id ' ,rows[0].event_id);
+  //         var eventId = rows[0].event_id;
+  //         addUserEvents(userId, eventId, false);
+  //       }
+  //     })
+  //   }
+  // })
 })
 
 module.exports = router;
