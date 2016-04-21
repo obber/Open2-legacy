@@ -5,7 +5,7 @@ angular
     'ngMaterial', 
     'ngRoute', 
     'ngMessages'
-    ]);
+    ])
 
 
 //moved to dashboard controller
