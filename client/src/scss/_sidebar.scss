@@ -2,7 +2,7 @@
   top: 0px;
   position: fixed;
   height: 100%;
-  width: 25%;
+  width: 30%;
   overflow: hidden;
 }
 
@@ -63,4 +63,10 @@
 .new-event:active {
   box-shadow: 0 -2px 0 $blue__2, inset 0 -2px 0 #fff;
   background-color: $blue__1;
+}
+
+.new-event-container {
+  position: relative;
+  background-color: #fff;
+  width: 100%;
 }
