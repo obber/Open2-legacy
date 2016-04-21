@@ -140,8 +140,18 @@ angular
             method: 'POST',
             url: 'http://localhost:8080/dashboard/join',
             data: eventId
-          });
+          }).then(success,err);
+
+          function success(resp){
+            console.log(resp);
+          }
+
+          function err(err){
+            console.log(err);
+          }
       };
+
+      
 
 
      //remove the record of user from database// this isn't handled in the backend 

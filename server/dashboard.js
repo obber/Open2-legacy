@@ -169,19 +169,44 @@ router.get('/friends', function(request, response){
 //what's the point of this? 
 //todo: need to understand what this post is doing
 //helper functions:
-router.post('/join', function(request, response){
-  var username = request.body.user;
-  var eventid = request.body.eventId;
-  // console.log('inside post join req.body .username', request.body.user);
-  // console.log('inside post join req.body.eventid', request.body.eventId);
-  helper.getUserId(username).then(function(resp){
-    console.log('this is resp in userid query in join ',resp[0].id);
+router.post('/join', function(req, res){
+  var username = req.body.user;
+  var eventid = req.body.eventId;
+  var userid;
+  
+  helper.getUserId(username)
+  .then(function(resp){
+    userid = resp[0].id;
     return resp[0].id;
-   }).then(function(){
-    return helper.insertEvent(userid,eventid).then(function(resp){
-      console.log('userevent inserted',resp);
     })
-   })
+  .then(function(resp){
+    helper.checkUserEvent(resp,eventid,false)
+    .then(function(resp){
+    return resp;
+    })
+  .then(function(resp){
+    if(resp.length !== 0){
+      console.log('inside join if');
+      res.json({
+          username : username,
+          success : false,
+          message : 'that event already exist!'
+          });
+    } else {
+      console.log('inside join else');
+      helper.insertEvent(userid,eventid,false)
+      .then(function(){
+        res.json({
+          username : username,
+          userid : userid,
+          eventid: eventid,
+          success : true,
+          message : 'you joined the event'
+          })
+        });
+      }
+    })
+  })
   
 
   //db.query('SELECT id FROM Users WHERE `username` = ?;', [username], function(err, rows){

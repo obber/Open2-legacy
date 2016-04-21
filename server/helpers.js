@@ -32,9 +32,17 @@ function getUserId(username){
   })
 }
 
-function insertEvent(userid, eventid){
+function checkUserEvent(userid,eventid,status){
+  return new Promise(function(resolve,reject){
+    db.query('SELECT * FROM UserEvents WHERE `user_id`=? AND `event_id`=? AND `created_by`=?;',[userid,eventid,status],function(err,rows){
+      resolve(rows);
+    })
+  })
+}
+
+function insertEvent(userid, eventid, status){
   return new Promise(function(resolve, reject){
-    db.query('INSERT INTO Users SET `user_id`=?, `event_id`=?;', [userid], [eventid], function(err,query){
+    db.query('INSERT INTO UserEvents (`user_id`,`event_id`,`created_by`) VALUES ('+userid+', '+eventid+', '+status+');', function(err,query){
       resolve(query);
     })
   })
@@ -46,5 +54,6 @@ module.exports= {
   insertUser : insertUser,
   auth : auth,
   getUserId : getUserId,
-  insertEvent : insertEvent
+  insertEvent : insertEvent,
+  checkUserEvent : checkUserEvent
 }
