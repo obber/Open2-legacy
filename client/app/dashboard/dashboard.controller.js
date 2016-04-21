@@ -10,6 +10,16 @@ angular
   $scope.events = {};
   $scope.expand1 = false;
 
+  //created user filter
+  $scope.userFilter = function(item) {
+    return (item.username !== localStorage.getItem('username'));
+  }
+
+  $scope.myEventFilter = function(item) {
+    return (item.createdBy === 1);
+  }
+
+
   $scope.toggleExpand = function(n) {
     var toggleStatus = !$scope['expand' + n];
     $scope['expand' + n] = toggleStatus;
@@ -65,7 +75,9 @@ angular
     });
 
   $scope.events.list = eventsToJoin;
+  console.log('eventsToJoin', eventsToJoin);
   $scope.events.eventsIgoTo = myEvents;
+
 
 
 }); // end of .then
@@ -134,7 +146,6 @@ angular
     });
   };
 
-
 })
 
 /// this reversed the order of the events displayed on dashboard
@@ -156,7 +167,6 @@ function DialogController($scope, $mdDialog) {
     $mdDialog.hide(answer);
   };
 }
-
 
 
 })(); ///////// end of dahboard controller
