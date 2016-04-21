@@ -10,4 +10,4 @@ angular
     
   }
 
-})(); ///////// end of dahboard controller
+})();

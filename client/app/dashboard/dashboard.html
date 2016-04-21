@@ -16,7 +16,10 @@
       </button>
       
       <div class="sidebar-expand sidebar-friends">
-        <p ng-click="toggleExpand(1)" class="expand-title"><i class="fa fa-angle-down" aria-hidden="true"></i>&nbsp;<i class="fa fa-user"></i>&nbsp;View All Friends</p>
+        <p ng-click="toggleExpand(1)" class="expand-title"><i class="fa" ng-class="{
+          'fa-angle-down' : !toggled1,
+          'fa-angle-up'   : toggled1
+        }" aria-hidden="true"></i>&nbsp;<i class="fa fa-user"></i>&nbsp;Friends</p>
         <div ng-show="expand1" class="sidebar-to-expand friends-list">
           <!-- Jessica, do the NG repeat here for a list of all friends -->
           <p>Kan</p>
@@ -27,7 +30,10 @@
       </div>
 
       <div class="sidebar-expand sidebar-my-events">
-        <p ng-click="toggleExpand(2)" class="expand-title"><i class="fa fa-angle-down" aria-hidden="true"></i>&nbsp;<i class="fa fa-user"></i>&nbsp;View My Events</p>
+        <p ng-click="toggleExpand(2)" class="expand-title"><i class="fa" ng-class="{
+          'fa-angle-down' : !toggled2,
+          'fa-angle-up'   : toggled2
+        }" aria-hidden="true"></i>&nbsp;<i class="fa fa-user"></i>&nbsp;My Events</p>
         <div ng-show="expand2" class="sidebar-to-expand">
           <!-- Jessica, do the NG repeat here for a list of all events I have created. -->
           <!-- Layout for 'my events'. Do the ng-repeat on the li element -->
@@ -122,13 +128,16 @@
 <!--     <a href='' ng-click='login()'>Login</a> -->
       <div id="chat">
         <div id="messageContainer">
-          <ul id="example-messages">
-          </ul>
+          <div id="example-messages">
+          </div>
         </div>
-        <span class="chat-user">{{ username }}</span>
         <div class="message-input-container">
-          <input type="text" id="messageInput" placeholder="Enter message here">
-          <button id='submit'>Submit</button>
+          <div class="input-container">
+            <input type="text" id="messageInput" placeholder="Enter message here">
+          </div>
+          <div class="button-container">
+            <button id='submit'><i class="fa fa-paper-plane" aria-hidden="true"></i>Submit</button>
+          </div>
         </div>
       </div>
 

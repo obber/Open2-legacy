@@ -11,7 +11,9 @@ angular
   $scope.expand1 = false;
 
   $scope.toggleExpand = function(n) {
-    $scope['expand' + n] = !$scope['expand' + n];
+    var toggleStatus = !$scope['expand' + n];
+    $scope['expand' + n] = toggleStatus;
+    $scope['toggled' + n] = toggleStatus;
   }
 
   //// start uploading dashboard
