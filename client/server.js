@@ -6,6 +6,7 @@ var app = express();
 
 app.use(express.static('public'));
 
+
 app.get('/gettoken', function(req,res) {
   var token = tokenGenerator.createToken({ uid: "uniqueId1", username: "blop" });
   res.send(token);
