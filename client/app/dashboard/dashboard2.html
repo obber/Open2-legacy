@@ -20,28 +20,10 @@
       <div ng-if='events.fetch'>
 
         <li ng-repeat="event in events.list | reverse" style = "list-style: none">
-          <span style = "font-weight: bold">{{event.username}} wants to {{ event.eventname}}</span>
+          <span style = "font-weight: bold"> {{event.username}} wants to {{ event.eventname}} </span>
           <span>{{event.timestamp.slice(11, 19)}}</span>
           <md-button ng-click="join(event.id, event.status)" class="md-warn md-raised md-hue-2 font"> {{event.status}} </md-button>
         </li>
-
-        <ul>
-          <li class="event-item">
-            <p class="title"><i class="fa fa-futbol-o" aria-hidden="true"></i>Drinks</p>
-            <p class="username"><i class="fa fa-user" aria-hidden="true"></i>kanny</p>
-            <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>08:00:00 PM</p>
-          </li>
-          <li class="event-item">
-            <p class="title">Turn up</p>
-            <p class="username"><i class="fa fa-user" aria-hidden="true"></i>Jessica</p>
-            <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>08:00:00 PM</p>
-          </li>
-          <li class="event-item">
-            <p class="title">Okay Fine.</p>
-            <p class="username"><i class="fa fa-user" aria-hidden="true"></i>"Rich"ter</p>
-            <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>08:00:00 PM</p>
-          </li>
-        </ul>
 
       </div>
 
