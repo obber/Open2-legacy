@@ -24,8 +24,27 @@ function auth(user, pw){
   });
 }
 
+function getUserId(username){
+  return new Promise(function(resolve, reject){
+    db.query('SELECT * FROM Users Where `username` = ?;', [username], function(err,query){
+      resolve(query);
+    })
+  })
+}
+
+function insertEvent(userid, eventid){
+  return new Promise(function(resolve, reject){
+    db.query('INSERT INTO Users SET `user_id`=?, `event_id`=?;', [userid], [eventid], function(err,query){
+      resolve(query);
+    })
+  })
+}
+
+
 module.exports= {
   doesUserExist : doesUserExist,
   insertUser : insertUser,
-  auth : auth
+  auth : auth,
+  getUserId : getUserId,
+  insertEvent : insertEvent
 }

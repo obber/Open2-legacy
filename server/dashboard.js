@@ -4,6 +4,7 @@ var cors = require('cors');
 var bodyParser = require('body-parser');
 var twilio = require('twilio')('AC40691c0816f7dd360b043b23331f4f43','89f0d01b69bb6bcc473724b5b232b6f4');
 var router = express.Router();
+var helper = require('./helpers.js');
 
 var app = express();
 app.use(cors());
@@ -170,26 +171,38 @@ router.get('/friends', function(request, response){
 //helper functions:
 router.post('/join', function(request, response){
   var username = request.body.user;
-  var id = request.body.eventId;
+  var eventid = request.body.eventId;
+  // console.log('inside post join req.body .username', request.body.user);
+  // console.log('inside post join req.body.eventid', request.body.eventId);
+  helper.getUserId(username).then(function(resp){
+    console.log('this is resp in userid query in join ',resp[0].id);
+    return resp[0].id;
+   }).then(function(){
+    return helper.insertEvent(userid,eventid).then(function(resp){
+      console.log('userevent inserted',resp);
+    })
+   })
+  
 
-  db.query('SELECT id FROM Users WHERE `username` = ?;', [username], function(err, rows){
-    if(err){
-      throw err;
-    }else{
-      console.log("INSIDE JOIN POST",rows[0].id);
-      var userId = rows[0].id;
-
-      db.query('SELECT event_id FROM UserEvents WHERE `id` = ?;', [id],function(err, rows){
-        if(err){
-          throw err;
-        }else{
-          console.log("INSIDE POST USEREVENts", rows[0].event_id);
-          var eventId = rows[0].event_id;
-          addUserEvents(userId, eventId, false);
-        }
-      })
-    }
-  })
+  //db.query('SELECT id FROM Users WHERE `username` = ?;', [username], function(err, rows){
+  //   if(err){
+  //     throw err;
+  //   }else{
+  //     console.log("INSIDE JOIN POST",rows[0].id);
+  //     var userId = rows[0].id;
+  //     //is this really neccessary - - ? already have request.body. id 
+  //     db.query('SELECT event_id FROM UserEvents WHERE `id` = ?;', [id],function(err, rows){
+  //       if(err){
+  //         throw err;
+  //       }else{
+  //         console.log("INSIDE POST USEREVENts", rows[0].event_id);
+  //         console.log('this is database event id ' ,rows[0].event_id);
+  //         var eventId = rows[0].event_id;
+  //         addUserEvents(userId, eventId, false);
+  //       }
+  //     })
+  //   }
+  // })
 })
 
 module.exports = router;

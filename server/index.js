@@ -24,6 +24,7 @@ router.post('/homepage', function(req, res){
     if (result){
       console.log(resp[0])
       res.json({
+          username : username,
           success : true,
           message : 'you are logged in',
           token : auth.genToken(resp[0]),
