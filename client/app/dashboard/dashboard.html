@@ -22,12 +22,15 @@
         }" aria-hidden="true"></i>&nbsp;<i class="fa fa-user"></i>&nbsp;Friends</p>
         <div ng-show="expand1" class="sidebar-to-expand friends-list">
           <!-- Jessica, do the NG repeat here for a list of all friends -->
-          <p>Kan</p>
+          <p ng-repeat='friend in friends | filter: userFilter'>
+            {{friend.username}} </p>
+<!--           <p>Kan</p>
           <p>Jessica</p>
           <p>Ben</p>
-          <p>Annie</p>
+          <p>Annie</p> -->
         </div>
       </div>
+
 
       <div class="sidebar-expand sidebar-my-events">
         <p ng-click="toggleExpand(2)" class="expand-title"><i class="fa" ng-class="{
@@ -37,8 +40,18 @@
         <div ng-show="expand2" class="sidebar-to-expand">
           <!-- Jessica, do the NG repeat here for a list of all events I have created. -->
           <!-- Layout for 'my events'. Do the ng-repeat on the li element -->
+
           <ul>
-            <li class="my-event event-item">
+            <li class="my-event event-item" ng-repeat="event in events.eventsIgoTo | filter: myEventFilter"> 
+              <p class="title"> {{event.eventname}} </p>
+              <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i> {{event.timestamp.slice(0,10)}} <span> {{event.timestamp.slice(10,19)}}</span> </p>       
+              <p class="user"> <i class="fa fa-user"></i>{{event.username}} </p>
+              <p class="unjoin"><i class="fa fa-times" aria-hidden="true"></i><a href="">Remove Event</a></p>
+            </li>
+
+
+
+ <!--            <li class="my-event event-item">
               <p class="title">Drinks</p>
               <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>08:00:00 PM</p>
               <p class="unjoin"><i class="fa fa-times" aria-hidden="true"></i><a href="">Remove Event</a></p>
@@ -52,7 +65,7 @@
               <p class="title">Okay Fine.</p>
               <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>08:00:00 PM</p>
               <p class="unjoin"><i class="fa fa-times" aria-hidden="true"></i><a href="">Remove Event</a></p>
-            </li>
+            </li> -->
           </ul>
         </div>
       </div>
@@ -63,7 +76,16 @@
         <!-- Attending Events List -->
         <!-- Jessica, do the NG repeat here for a list of all events I am attending. -->
         <ul>
-          <li class="attending event-item">
+          <li class="attending event-item" ng-repeat="event in events.eventsIgoTo"> 
+            <p class="title"> {{event.eventname}} </p>
+        <!--     <p class="user"><i class="fa fa-user"></i> {{event.username}} </p> -->
+            <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i> {{event.timestamp.slice(0,10)}} <span> {{event.timestamp.slice(10,19)}}</span> </p>       
+            <p class="unjoin"><i class="fa fa-times" aria-hidden="true"></i><a href="">Leave Event</a></p>
+
+          </li>
+
+
+         <!--  <li class="attending event-item">
             <p class="title">Drinks</p>
             <p class="user"><i class="fa fa-user"></i>Kan</p>
             <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>08:00:00 PM</p>
@@ -86,7 +108,7 @@
             <p class="user"><i class="fa fa-user"></i>Rich-ter</p>
             <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>08:00:00 PM</p>
             <p class="unjoin"><i class="fa fa-times" aria-hidden="true"></i><a href="">Unjoin</a></p>
-          </li>
+          </li> -->
         </ul>
       </div>
 
