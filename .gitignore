@@ -14,5 +14,5 @@ client/assets
 ### source images ###
 *.psd
 
-sideServer/
-dist/
+sideServer
+client/dist
