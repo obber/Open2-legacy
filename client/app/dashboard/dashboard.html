@@ -1,17 +1,6 @@
- <head>
-  <meta charset='utf-8'/>
-  <script>
-    var app = {};
-  </script>
-
-
-</head>
-
-
-
-
 <div ng-controller="AppCtrl" class="admin-bar">
-  <button ng-click="logout()" id="logout">Logout</button>
+  <a href="" ng-click="logout()" class="logout" id="logout">Logout&nbsp;&nbsp;<i class="fa fa-sign-out" aria-hidden="true"></i></a>
+  <div class="admin-logo"></div>
 </div>
 
 <div id="sidebar">
@@ -24,13 +13,25 @@
 
   <h1 class="title"> My Events </h1>
 
+  <div ng-if='events.fetch'>
+
+      <li ng-repeat="event in events.list | reverse" style = "list-style: none">
+        <span style = "font-weight: bold"> {{event.username}} wants to {{ event.eventname}} </span>
+        <span> {{event.timestamp.slice(11, 19)}}</span>
+        <md-button ng-click="join(event.id, event.status)" class="md-warn md-raised md-hue-2 font"> {{event.status}} </md-button>
+      </li>
+
 <!-- Notification Box -->
     <div ng-if='events.fetch'>
 
 
 
       <h1 class="title"> Attending </h1>
-
+        <li ng-repeat="event in events.eventsIgoTo | reverse" style = "list-style: none">
+          <span style = "font-weight: bold"> I want to {{ event.eventname}} </span>
+          <span> {{event.timestamp.slice(11, 19)}}  </span>
+          <md-button ng-click="join(event.id, event.status)" class="md-warn md-raised md-hue-2 font"> {{event.status}} </md-button>
+        </li>
 
     </div>
   </ul>

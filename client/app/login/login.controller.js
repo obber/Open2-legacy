@@ -5,7 +5,7 @@ angular
   // login controller
   .controller('loginCtrl', function($rootScope, $scope, Services, $location) {
 
-  $rootScope.bodyClass = "bluebg";
+  $rootScope.bodyClass = "bluebg no-scroll";
   
   $scope.pageClass = "login auth";
   $scope.loading = false;

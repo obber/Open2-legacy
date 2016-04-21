@@ -1,0 +1,27 @@
+.admin-logo {
+  background-image: url('../img/logo-mark-white.png');
+  width: 46px;
+  height: 100%;
+  background-size: 46px 41px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  position: relative;
+  margin: auto;
+  opacity: 0.4;
+}
+
+.admin-bar {
+
+  .logout {
+    float: right;
+    position: relative;
+    color: #fff;
+    top: 19px;
+    right: 25px;
+    text-decoration: none;
+  }
+
+  .logout:hover {
+    color: $lightblue;
+  }
+}
