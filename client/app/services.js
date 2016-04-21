@@ -22,9 +22,10 @@ angular
         //store both.
         console.log('inside login front end', " ", resp);
         if(resp.data.token){
-          saveUserInfo(resp.data.username,resp.data.token);
+          saveUserInfo(resp.data.username,resp.data.token,resp.data.firebaseToken);
           $location.path('/dashboard');
         }
+        console.log(resp);
         return resp;
       }
 
@@ -53,7 +54,8 @@ angular
       return $http(request).then(success, err);
       
       function success(resp){
-        if(resp.data.token){
+        console.log('inside signup', resp)
+        if(resp.data){
           saveUserInfo(resp.data.token);
           saveUserInfo(resp.data.username);
           saveUserInfo(resp.data.firebaseToken);
@@ -68,10 +70,11 @@ angular
         }
       }
 
-      function saveUserInfo(username,token){
+      function saveUserInfo(username,token,firebaseToken){
         //need to add firebase token in parameter
         $window.localStorage['username'] =username;
         $window.localStorage['jwtToken'] = token;
+        $window.localStorage['firebaseToken'] = firebaseToken;
         //need to locate firebase token in local storage
       }
 
@@ -83,6 +86,7 @@ angular
         return $window.localStorage['username'];
       }
      //need to get firebase token from local storage
+     
      // get the event info from database 
     
 
