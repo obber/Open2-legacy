@@ -7,15 +7,52 @@
 
 <div id="sidebar-wrapper">
   <div class="sidebar" id="sidebar" ng-controller='dashboardCtrl'>
-
+    
       <!-- event button -->
       <button class="new-event" id="newEvent" ng-click="showAdvanced($event)">
         <span>
           New Event
         </span>
       </button>
+      
+      <div class="sidebar-expand sidebar-friends">
+        <p class="expand-title"><i class="fa fa-angle-down" aria-hidden="true"></i>&nbsp;<i class="fa fa-user"></i>&nbsp;View All Friends</p>
+        <div class="sidebar-to-expand">
+          <!-- Jessica, do the NG repeat here for a list of all friends -->
+          <p></p>
+        </div>
+      </div>
 
-      <h1 class="title">My Events</h1>
+      <div class="sidebar-expand sidebar-my-events">
+        <p class="expand-title"><i class="fa fa-angle-down" aria-hidden="true"></i>&nbsp;<i class="fa fa-user"></i>&nbsp;View My Events</p>
+        <div class="sidebar-to-expand">
+          <!-- Jessica, do the NG repeat here for a list of all events I have created. -->
+          <!-- Layout for 'my events'. Do the ng-repeat on the li element -->
+          <ul>
+            <li class="my-event event-item">
+              <p class="title"><i class="fa fa-futbol-o" aria-hidden="true"></i>Drinks</p>
+              <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>08:00:00 PM</p>
+            </li>
+            <li class="my-event event-item">
+              <p class="title"><i class="fa fa-futbol-o" aria-hidden="true"></i>Turn up</p>
+              <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>08:00:00 PM</p>
+            </li>
+            <li class="my-event event-item">
+              <p class="title"><i class="fa fa-futbol-o" aria-hidden="true"></i>Okay Fine.</p>
+              <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>08:00:00 PM</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="sidebar-events-attending">
+        <h2>Events I'm Attending</h2>
+      </div>
+
+      
+
+
+      <h2>Below this is the original code.</h2>
 
       <div ng-if='events.fetch'>
 
@@ -25,35 +62,45 @@
           <md-button ng-click="join(event.id, event.status)" class="md-warn md-raised md-hue-2 font"> {{event.status}} </md-button>
         </li>
 
-        <ul>
-          <li class="event-item">
-            <p class="title"><i class="fa fa-futbol-o" aria-hidden="true"></i>Drinks</p>
-            <p class="username"><i class="fa fa-user" aria-hidden="true"></i>kanny</p>
-            <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>08:00:00 PM</p>
-          </li>
-          <li class="event-item">
-            <p class="title">Turn up</p>
-            <p class="username"><i class="fa fa-user" aria-hidden="true"></i>Jessica</p>
-            <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>08:00:00 PM</p>
-          </li>
-          <li class="event-item">
-            <p class="title">Okay Fine.</p>
-            <p class="username"><i class="fa fa-user" aria-hidden="true"></i>"Rich"ter</p>
-            <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>08:00:00 PM</p>
-          </li>
-        </ul>
-
       </div>
 
       <!-- Notification Box -->
       <div ng-if='events.fetch'>
 
-        <h1 class="title">Attending</h1>
-          <li ng-repeat="event in events.eventsIgoTo | reverse" style = "list-style: none">
-            <span style = "font-weight: bold"> I want to {{ event.eventname}} </span>
-            <span> {{event.timestamp.slice(11, 19)}}  </span>
-            <md-button ng-click="join(event.id, event.status)" class="md-warn md-raised md-hue-2 font"> {{event.status}} </md-button>
+        <h1 class="sidebar-title">Attending</h1>
+
+        <!--  -->
+        <ul>
+          <li class="attending event-item">
+            <p class="title"><i class="fa fa-futbol-o" aria-hidden="true"></i>Drinks</p>
+            <p class="user"><i class="fa fa-user"></i>Kan</p>
+            <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>08:00:00 PM</p>
           </li>
+          <li class="attending event-item">
+            <p class="title"><i class="fa fa-futbol-o" aria-hidden="true"></i>JAYZUSS</p>
+            <p class="user"><i class="fa fa-user"></i>Annie</p>
+            <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>08:00:00 PM</p>
+            <p class="unjoin"><i class="fa fa-times" aria-hidden="true"></i><a href="">Unjoin</a></p>
+          </li>
+          <li class="attending event-item">
+            <p class="title"><i class="fa fa-futbol-o" aria-hidden="true"></i>TurnUPPPP!</p>
+            <p class="user"><i class="fa fa-user"></i>Jessica</p>
+            <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>08:00:00 PM</p>
+            <p class="unjoin"><i class="fa fa-times" aria-hidden="true"></i><a href="">Unjoin</a></p>
+          </li>
+          <li class="attending event-item">
+            <p class="title"><i class="fa fa-futbol-o" aria-hidden="true"></i>"Okay Fine"</p>
+            <p class="user"><i class="fa fa-user"></i>Rich-ter</p>
+            <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>08:00:00 PM</p>
+            <p class="unjoin"><i class="fa fa-times" aria-hidden="true"></i><a href="">Unjoin</a></p>
+          </li>
+        </ul>
+
+        <li ng-repeat="event in events.eventsIgoTo | reverse" style = "list-style: none">
+          <span style = "font-weight: bold"> I want to {{ event.eventname}} </span>
+          <span> {{event.timestamp.slice(11, 19)}}  </span>
+          <md-button ng-click="join(event.id, event.status)" class="md-warn md-raised md-hue-2 font"> {{event.status}} </md-button>
+        </li>
 
       </div>
 
@@ -64,15 +111,17 @@
 
   <div id='firechat-wrapper' ng-controller='chatCtrl'>
 
-    <a href='#' ng-click='login()'>Login</a>
+    <a href='' ng-click='login()'>Login</a>
       <div id="chat">
         <div id="messageContainer">
           <ul id="example-messages">
           </ul>
         </div>
         <span class="chat-user">{{ username }}</span>
-        <input type="text" id="messageInput" placeholder="Enter message here">
-        <button>Submit</button>
+        <div class="message-input-container">
+          <input type="text" id="messageInput" placeholder="Enter message here">
+          <button>Submit</button>
+        </div>
       </div>
 
   <div>

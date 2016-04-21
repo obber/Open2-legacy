@@ -22,6 +22,7 @@
           //SAVE DATA TO FIREBASE AND EMPTY FIELD
           var timeString = Date.parse(new Date()).toString();
           console.log('timeString =', timeString);
+          console.log('yo');
           ref.push({name:username, text:message, time: timeString });
           messageField.val('');
         }
@@ -33,7 +34,7 @@
         var data = snapshot.val();
         var username = data.name || "anonymous";
         var message = data.text;
-        var time = new Date(Number(data.time)).toTimeString();
+        var time = data.time ? new Date(Number(data.time)).toTimeString() : '';
         console.log('time is',time);
         console.log('data.timeString', data.time);
 
