@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic);
 .whitebg {
   background-color: #fff; }
 
@@ -7,6 +7,24 @@
 
 .no-scroll {
   overflow: hidden; }
+
+button {
+  border: 0;
+  outline: 0;
+  display: block;
+  width: 100%;
+  padding: 13px;
+  border-radius: 3px;
+  font-weight: 700; }
+
+button:active {
+  position: relative;
+  top: 4px; }
+
+.vertical-helper {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle; }
 
 * {
   box-sizing: border-box;
@@ -31,11 +49,6 @@ input, button {
 /*.md-button {}*/
 .dashQuestion {
   font-size: 30px; }
-
-h1 {
-  color: #FF4500;
-  text-align: center;
-  font-size: 50px; }
 
 #eventContainer {
   position: relative;
@@ -186,14 +199,22 @@ h1 {
   background-color: #105277;
   height: 60px; }
 
-#sidebar {
+#sidebar-wrapper {
   top: 60px;
-  left: 0;
   position: fixed;
   height: 100%;
   width: 25%;
-  background-color: white;
-  overflow-y: auto; }
+  overflow: hidden; }
+
+#sidebar {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  box-sizing: border-box;
+  padding: 25px;
+  background-color: #ececec; }
   #sidebar ul {
     padding: 0px; }
   #sidebar #newEvent {
@@ -201,18 +222,33 @@ h1 {
     margin-top: 0px; }
   #sidebar #logout {
     float: right; }
-  #sidebar h1 {
-    font-size: 36px;
-    background-color: white;
-    margin-bottom: 7px;
-    background-color: pink;
-    text-transform: uppercase;
-    text-align: left; }
   #sidebar #title {
     color: #FF4300;
     text-align: center;
     font-size: 40px;
     text-align: left; }
+
+.new-event {
+  background-color: #105277;
+  border: 0;
+  border-radius: 3px;
+  padding: 12px;
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 2px 0 0 #0A3D59;
+  text-shadow: 0 1px 0 #0A3D59; }
+
+.new-event:active > span {
+  position: relative;
+  top: -2px; }
+
+.new-event:hover {
+  text-shadow: 0 1px 0 #0A3D59;
+  background-color: #1E6B96; }
+
+.new-event:active {
+  box-shadow: 0 -2px 0 #062B40, inset 0 -2px 0 #fff;
+  background-color: #0A3D59; }
 
 #contentWrapper {
   padding: 20px;
@@ -277,25 +313,16 @@ h1 {
   .auth-form label {
     font-size: 16px; }
   .auth-form button {
-    border: 0;
-    outline: 0;
-    display: block;
-    width: 100%;
-    padding: 13px;
-    border-radius: 3px;
     background-color: #57B53E;
     color: #fff;
-    font-weight: 700;
     box-shadow: 0 2px 0 0 #43942C;
     margin-bottom: 30px;
     text-shadow: 0 1px 0 #43942C; }
   .auth-form button:hover {
     background-color: #67C44F; }
   .auth-form button:active {
-    position: relative;
-    top: 4px;
-    background-color: #4DA336;
-    box-shadow: 0 -2px 0 #3A782A, inset 0 -2px 0 #fff; }
+    box-shadow: 0 -2px 0 #3A782A, inset 0 -2px 0 #fff;
+    background-color: #4DA336; }
     .auth-form button:active span {
       position: relative;
       top: -2px; }
@@ -405,3 +432,31 @@ h1 {
 
 .admin-bar .logout:hover {
   color: #BAD7E8; }
+
+.overlay {
+  z-index: 10;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-align: center; }
+
+.new-event-modal {
+  box-shadow: 0 0 45px 0px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  width: 400px;
+  height: 300px;
+  position: relative;
+  margin: auto;
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 3px; }
+
+md-backdrop.md-opaque {
+  opacity: .48; }
+
+md-backdrop.md-opaque.ng-enter-active {
+  opacity: .48;
+  background-color: rgba(33, 33, 33, 0.48); }

@@ -65,15 +65,8 @@
   }
 
   button {
-    border: 0;
-    outline: 0;
-    display: block;
-    width: 100%;
-    padding: 13px;
-    border-radius: 3px;
     background-color: #57B53E;
     color: #fff;
-    font-weight: 700;
     box-shadow: 0 2px 0 0 #43942C;
     margin-bottom: 30px;
     text-shadow: 0 1px 0 #43942C;
@@ -84,10 +77,8 @@
   }
 
   button:active {
-    position: relative;
-    top: 4px;
-    background-color: #4DA336;
     box-shadow: 0 -2px 0 #3A782A, inset 0 -2px 0 #fff;
+    background-color: #4DA336;
 
     span {
       position: relative;

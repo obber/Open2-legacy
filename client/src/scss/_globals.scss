@@ -1,3 +1,24 @@
 .no-scroll {
   overflow: hidden;
 }
+
+button {
+  border: 0;
+  outline: 0;
+  display: block;
+  width: 100%;
+  padding: 13px;
+  border-radius: 3px;
+  font-weight: 700;
+}
+
+button:active {
+  position: relative;
+  top: 4px;
+}
+
+.vertical-helper {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
