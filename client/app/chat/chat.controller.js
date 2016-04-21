@@ -7,6 +7,11 @@
 
       $scope.username = localStorage.username;
 
+      // chat message input resize
+      $(function() {
+        $("#messageInput");
+      })
+
       // REGISTER DOM ELEMENTS
       console.log('registering');
       var messageField = $('#messageInput');
@@ -52,21 +57,24 @@
         var data = snapshot.val();
         var username = data.name || 'anonymous';
         var message = data.text;
-        var time = data.time ? new Date(Number(data.time)).toTimeString() : '';
-        console.log('username =', username);
-
+        var time = data.time ? new Date(Number(data.time)) : '';
 
         //CREATE ELEMENTS MESSAGE & SANITIZE TEXT
         if (username !== 'anonymous') {
-          var messageElement = $("<p>");
-          var nameElement = $("<strong class='example-chat-username'></strong>:")
-          nameElement.text(username + ' ' + time + ': ');
+          var singleMessage = $("<div class='message-single'></div>");
+          var messageElement = $("<p></p>");
+          var nameElement = $("<strong class='example-chat-username'></strong>:");
+          var timeElement = $("<span class='time'></span>");
 
-          messageElement.text(message).prepend(nameElement);
+          nameElement.text(username + ': ');
+          timeElement.text(moment(time).format("ddd, h:mm:ss a"));
+          messageElement.text(message);
+
+          singleMessage.prepend(nameElement).append(timeElement).append(messageElement);
 
           //ADD MESSAGE
-          messageList.append(messageElement)
-       }
+          messageList.append(singleMessage)
+        }
 
         //SCROLL TO BOTTOM OF MESSAGE LIST
         messageList[0].scrollTop = messageList[0].scrollHeight;

@@ -2,8 +2,8 @@
   top: 0px;
   position: fixed;
   height: 100%;
-  width: 30%;
   overflow: hidden;
+  background-color: #ececec;
 }
 
 #sidebar {
@@ -12,10 +12,9 @@
   width: 100%;
   height: 100%;
   overflow-y: scroll;
-  box-sizing: border-box;
-  padding: 25px;
+  box-sizing: content-box;
+  padding-right: 14px;
   padding-top: $topbar + 25px;
-  background-color: #ececec;
 
   ul {
     padding: 0px;
@@ -71,8 +70,16 @@
   width: 100%;
 }
 
+.expand-title:hover {
+  cursor: pointer;
+}
+
+.expand-title:focus {
+  outline: 0;
+}
+
 .sidebar-to-expand {
-  padding-left: 15px;
+  padding-left: 12px;
 
   ul {
 

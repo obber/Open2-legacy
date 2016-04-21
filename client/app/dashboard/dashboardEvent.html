@@ -1,37 +1,23 @@
 <md-dialog aria-label="Dash" ng-cloak style="width: 500px">
-    <div ng-controller="dashboardCtrl">
-      <form>
-        <md-toolbar>
-          <h2 class = "open" style='text-align: center; color: red;'>What do I want to do?</h2>
-        </md-toolbar>
-      <md-dialog-content>
-        <div class="md-dialog-content">
-          <form name="myForm">
-          <div layout="column" layout-padding ng-cloak> <br/>
-            <label class="font">pick time</label>
-            <input type="time" id="timeInput" name="input" ng-model="time.value"/>
-            <md-input-container class="md-icon-float md-block">
-              <label class = "font">I want to...</label>
-              <input  ng-model="user.activity" type="text">
-            </md-content>
-          </div>
+    <div ng-controller="dashboardCtrl" class="new-event-modal">
 
-        <!-- This is end of input data -->
-        <p>
-          Lets see if anyone is Open2...
-        </p>
+      <h2>What do you feel like doing?</h2>
 
-        </div>
+      <div class="input-container">
+        <label>Pick a time</label>
+        <input type="time" id="timeInput" name="input" ng-model="time.value"/>
+        <i class="fa fa-clock-o new-event-icon" aria-hidden="true"></i>
+      </div>
+      
+      <div class="input-container">
+        <label>I want to...</label>
+        <input ng-model="user.activity" type="text">
+        <i class="fa fa-magic new-event-icon" aria-hidden="true"></i>
+      </div>
 
-      </md-dialog-content>
-
-      <md-dialog-actions layout="row">
-        <span flex></span>
-        <md-button ng-click="answer()"> Cancel </md-button>
-        <md-button ng-click="click(); answer()" style="margin-right:20px;"> OKAY! </md-button>
-      </md-dialog-actions>
-
-    </form>
+      <button ng-click="click(); answer()" style="margin-right:20px;">
+        <span>Make Event</span>
+      </button>
   
   </div>
 </md-dialog>
