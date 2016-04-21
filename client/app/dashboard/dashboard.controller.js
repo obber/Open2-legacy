@@ -96,21 +96,13 @@ angular
 
   //this is our pop up dialog box
   $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
-   $scope.showAdvanced = function(ev) {
-    var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
+  $scope.showAdvanced = function(ev) {
     $mdDialog.show({
       controller: DialogController,
       templateUrl: 'app/dashboard/dashboardEvent.html',
       parent: angular.element(document.body),
       targetEvent: ev,
-      clickOutsideToClose:true,
-      fullscreen: useFullScreen
-    })
-
-    $scope.$watch(function() {
-      return $mdMedia('xs') || $mdMedia('sm');
-    }, function(wantsFullScreen) {
-      $scope.customFullscreen = (wantsFullScreen === true);
+      clickOutsideToClose:true
     });
   };
   //this the end of our pop up dialog box.
@@ -127,7 +119,6 @@ angular
       'time' : $scope.time.value,
       'username': localStorage.getItem('username')
     }
-
      
     Services.eventsPost(eventInfo)
     .then(function(respData){

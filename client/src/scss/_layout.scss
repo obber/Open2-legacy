@@ -11,47 +11,7 @@ $topbar: 60px;
 	height: $topbar;
 }
 
-#sidebar {
-	top: $topbar;
-	left: 0;
-	overflow-y: scroll;
-	position: fixed;
-	height: 100%;
-	width: 25%;
-	background-color: white;
-	overflow-y: auto;
-
-	ul {
-		padding: 0px;
-	}
-
-	#newEvent {
-		min-width: 250px;
-		// margin-left: 145px;
-		margin-top: 0px;
-	}
-
-	#logout {
-		float: right;
-	}
-
-	h1 {
-		font-size: 36px;
-		background-color: white;
-		margin-bottom: 7px;
-		background-color: pink;
-		text-transform: uppercase;
-		text-align: left;
-	}
-
-	#title {
-	  color: #FF4300;
-	  text-align: center;
-	  font-size: 40px;
-	  text-align: left;
-	}
-
-}
+@import 'sidebar';
 
 #contentWrapper {
 	padding: 20px;
