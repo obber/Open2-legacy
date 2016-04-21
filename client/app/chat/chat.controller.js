@@ -4,6 +4,7 @@
     .module('myApp')
     // login controller
     .controller('chatCtrl', function($scope) { 
+
       $scope.username = localStorage.username;
 
       // REGISTER DOM ELEMENTS
@@ -11,18 +12,17 @@
       var messageField = $('#messageInput');
       var messageList = $('#example-messages');
 
-      console.log('Line 41');
       // LISTEN FOR KEYPRESS EVENT
       messageField.keypress(function (e) {
         if (e.keyCode == 13) {
           //FIELD VALUES
           var username = localStorage.username;
-          var message = messageField.val();
-          console.log('username =', username);
-          console.log('message =', message);    
+          var message = messageField.val();   
 
           //SAVE DATA TO FIREBASE AND EMPTY FIELD
-          ref.push({name:username, text:message});
+          var timeString = Date.parse(new Date()).toString();
+          console.log('timeString =', timeString);
+          ref.push({name:username, text:message, time: timeString });
           messageField.val('');
         }
       });
@@ -33,11 +33,15 @@
         var data = snapshot.val();
         var username = data.name || "anonymous";
         var message = data.text;
+        var time = new Date(Number(data.time)).toTimeString();
+        console.log('time is',time);
+        console.log('data.timeString', data.time);
+
 
         //CREATE ELEMENTS MESSAGE & SANITIZE TEXT
-        var messageElement = $("<li>");
+        var messageElement = $("<p>");
         var nameElement = $("<strong class='example-chat-username'></strong>:")
-        nameElement.text(username + ": ");
+        nameElement.html(username + ' ' + time + ': ');
         messageElement.text(message).prepend(nameElement);
 
         //ADD MESSAGE
@@ -46,6 +50,7 @@
         //SCROLL TO BOTTOM OF MESSAGE LIST
         messageList[0].scrollTop = messageList[0].scrollHeight;
       });
+
 
       function makeChat(authData) { 
         var chat = new Firechat(ref);
@@ -68,4 +73,3 @@
     })
 
 })();
-

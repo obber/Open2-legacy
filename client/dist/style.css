@@ -189,6 +189,7 @@ h1 {
 #sidebar {
   top: 60px;
   left: 0;
+  overflow-y: scroll;
   position: fixed;
   height: 100%;
   width: 25%;

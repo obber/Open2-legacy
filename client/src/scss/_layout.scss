@@ -14,6 +14,7 @@ $topbar: 60px;
 #sidebar {
 	top: $topbar;
 	left: 0;
+	overflow-y: scroll;
 	position: fixed;
 	height: 100%;
 	width: 25%;

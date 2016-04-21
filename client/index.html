@@ -60,6 +60,9 @@
   <script>
     // Create a new Firebase reference, and a new instance of the Login client
     var ref = new Firebase('https://burning-torch-2543.firebaseio.com/lobby');
+    var mySessionRef = ref.push();
+    mySessionRef.onDisconnect().update({ endedAt: Firebase.ServerValue.TIMESTAMP });
+    mySessionRef.update({ startedAt: Firebase.ServerValue.TIMESTAMP });
   </script>
 
 </body>
