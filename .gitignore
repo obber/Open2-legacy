@@ -15,4 +15,4 @@ client/assets
 *.psd
 
 sideServer/
-dist/
+client/dist/

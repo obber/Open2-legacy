@@ -197,10 +197,11 @@ input, button {
   text-align: center;
   position: relative;
   background-color: #105277;
-  height: 60px; }
+  height: 60px;
+  z-index: 5; }
 
 #sidebar-wrapper {
-  top: 60px;
+  top: 0px;
   position: fixed;
   height: 100%;
   width: 25%;
@@ -214,11 +215,11 @@ input, button {
   overflow-y: scroll;
   box-sizing: border-box;
   padding: 25px;
+  padding-top: 85px;
   background-color: #ececec; }
   #sidebar ul {
     padding: 0px; }
   #sidebar #newEvent {
-    min-width: 250px;
     margin-top: 0px; }
   #sidebar #logout {
     float: right; }

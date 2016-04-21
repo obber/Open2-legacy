@@ -9,6 +9,7 @@ $topbar: 60px;
 	position: relative;
 	background-color: $blue;
 	height: $topbar;
+	z-index: 5;
 }
 
 @import 'sidebar';

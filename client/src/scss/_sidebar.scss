@@ -1,5 +1,5 @@
 #sidebar-wrapper {
-  top: $topbar;
+  top: 0px;
   position: fixed;
   height: 100%;
   width: 25%;
@@ -14,6 +14,7 @@
   overflow-y: scroll;
   box-sizing: border-box;
   padding: 25px;
+  padding-top: $topbar + 25px;
   background-color: #ececec;
 
   ul {
@@ -21,7 +22,6 @@
   }
 
   #newEvent {
-    min-width: 250px;
     // margin-left: 145px;
     margin-top: 0px;
   }
