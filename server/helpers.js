@@ -24,8 +24,36 @@ function auth(user, pw){
   });
 }
 
+function getUserId(username){
+  return new Promise(function(resolve, reject){
+    db.query('SELECT * FROM Users Where `username` = ?;', [username], function(err,query){
+      resolve(query);
+    })
+  })
+}
+
+function checkUserEvent(userid,eventid,status){
+  return new Promise(function(resolve,reject){
+    db.query('SELECT * FROM UserEvents WHERE `user_id`=? AND `event_id`=? AND `created_by`=?;',[userid,eventid,status],function(err,rows){
+      resolve(rows);
+    })
+  })
+}
+
+function insertEvent(userid, eventid, status){
+  return new Promise(function(resolve, reject){
+    db.query('INSERT INTO UserEvents (`user_id`,`event_id`,`created_by`) VALUES ('+userid+', '+eventid+', '+status+');', function(err,query){
+      resolve(query);
+    })
+  })
+}
+
+
 module.exports= {
   doesUserExist : doesUserExist,
   insertUser : insertUser,
-  auth : auth
+  auth : auth,
+  getUserId : getUserId,
+  insertEvent : insertEvent,
+  checkUserEvent : checkUserEvent
 }
