@@ -70,3 +70,49 @@
   background-color: #fff;
   width: 100%;
 }
+
+.sidebar-to-expand {
+  padding-left: 15px;
+
+  ul {
+
+    li {
+      list-style: none;
+    }
+  }
+}
+
+.event-item {
+  
+  * {
+    margin: 0;
+  }
+
+  i {
+    margin-right: 15px;
+    color: $darkgray;
+  }
+
+  .title {
+    font-weight: 700;
+    font-size: 15px;
+    margin: 15px 0 4px 0;
+  }
+}
+
+.friends-list {
+  p {
+    margin: 4px;
+  }
+}
+
+.sidebar-events-attending {
+
+  ul li {
+    list-style: none;
+  }
+
+  ul li p {
+    margin: 2px;
+  }
+}
