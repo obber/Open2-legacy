@@ -139,15 +139,19 @@ angular
 
 
      // add a record to database when user joins an event
-      var joinEvent = function(eventId) {
+      var joinEvent = function(event, eventsIgoTo) {
+        console.log('event is', event)
           return $http({
             method: 'POST',
             url: 'http://localhost:8080/dashboard/join',
-            data: eventId
+            data: event
           }).then(success,err);
 
           function success(resp){
-            console.log(resp);
+            console.log('resp =', resp)
+            console.log('Inside joinEvent resp.data =',resp.data);
+            console.log('resp.config.data', resp.config.data)
+            eventsIgoTo.push(resp.config.data);
           }
 
           function err(err){

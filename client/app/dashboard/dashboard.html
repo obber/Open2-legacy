@@ -101,22 +101,22 @@
         <li ng-repeat="event in events.list | reverse" style = "list-style: none">
           <span style = "font-weight: bold">{{event.username}} wants to {{ event.eventname}}</span>
           <span>{{event.timestamp.slice(11, 19)}}</span>
-          <md-button ng-click="join(event.id, event.status)" class="md-warn md-raised md-hue-2 font"> {{event.status}} </md-button>
+          <md-button ng-click="join(event)" class="md-warn md-raised md-hue-2 font"> {{event.status}} </md-button>
         </li>
 
       </div>
 
       <!-- Notification Box -->
-      <div ng-if='events.fetch'>
+<!--       <div ng-if='events.fetch'>
 
         <h1 class="sidebar-title">Attending</h1>
-
+        {{event}}
         <li ng-repeat="event in events.eventsIgoTo | reverse" style = "list-style: none">
           <span style = "font-weight: bold"> I want to {{ event.eventname}} </span>
           <span> {{event.timestamp.slice(11, 19)}}  </span>
-          <md-button ng-click="join(event.id, event.status)" class="md-warn md-raised md-hue-2 font"> {{event.status}} </md-button>
+          <md-button ng-click="join(event)" class="md-warn md-raised md-hue-2 font"> {{event.status}} </md-button>
         </li>
-
+ -->
       </div>
 
   </div>
