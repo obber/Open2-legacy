@@ -133,8 +133,8 @@ Services.uploadFriendslist()
   $scope.friends = data.data;
 });
 
- $scope.getAllEvents = Services.getAllEvents();
-  $scope.getAllUserEvents = Services.getAllUserEvents();
+// $scope.getAllEvents = Services.getAllEvents();
+// $scope.getAllUserEvents = Services.getAllUserEvents();
 
 
 
@@ -167,18 +167,18 @@ Services.uploadFriendslist()
     Services.eventsPost(eventInfo)
     .then(function(respData){
       //console.log('i got this back from server/database', respData);
-      $route.reload(); //
+      location.reload();
     });
   };
 
 })
 
 /// this reversed the order of the events displayed on dashboard
-.filter('reverse', function() {
-  return function(items) {
-    return items.slice().reverse();
-  };
-});
+// .filter('reverse', function() {
+//   return function(items) {
+//     return items.slice().reverse();
+//   };
+// });
 
 
 function DialogController($scope, $mdDialog) {

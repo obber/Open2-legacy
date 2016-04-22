@@ -68,7 +68,7 @@
     }
   }
 
-  li:nth-child(even) {
+  li:nth-child(odd) {
     margin-right: 0;
     margin-left: 5%;
   }
@@ -79,7 +79,7 @@
 
   li .title {
     font-weight: 700;
-    font-size: 16px;
+    font-size: 18px;
     margin: 0 0 4px 0;
   }
 

@@ -605,7 +605,7 @@ input, button {
       position: relative;
       top: -2px; }
 
-.events-list li:nth-child(even) {
+.events-list li:nth-child(odd) {
   margin-right: 0;
   margin-left: 5%; }
 
@@ -614,7 +614,7 @@ input, button {
 
 .events-list li .title {
   font-weight: 700;
-  font-size: 16px;
+  font-size: 18px;
   margin: 0 0 4px 0; }
 
 .events-list li .fa {

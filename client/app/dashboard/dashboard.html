@@ -31,7 +31,7 @@
       </div>
 
 
-      <div class="sidebar-expand sidebar-my-events">
+      <div class="sidebar-expand sidebar-my-events" ng-controller="hostedEventsCtrl">
         <div class="wrapper">
           <p ng-click="toggleExpand(2)" class="expand-title"><i class="fa" ng-class="{
             'fa-angle-down' : !toggled2,
@@ -41,34 +41,25 @@
         </div>
         <div ng-show="expand2" class="sidebar-to-expand">
           <ul>
-              <li class="my-event event-item" ng-repeat="event in events.eventsIgoTo | filter: myEventFilter"> 
+              <li class="my-event event-item" ng-repeat="event in hostedEvents"> 
                 <p class="title">{{event.eventname}}</p>
                 <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>{{event.timestamp.slice(0,10)}}<span>{{event.timestamp.slice(10,19)}}</span></p>
-                <p class="user"> <i class="fa fa-user"></i>{{event.username}} </p>
                 <p class="unjoin"><i class="fa fa-times" aria-hidden="true"></i><a href="">Remove Event</a></p>
               </li>
           </ul>
         </div>
       </div>
       
-      <div class="sidebar-events-attending wrapper">
+      <div class="sidebar-events-attending wrapper" ng-controller="myEventsCtrl">
         <h2>Events I'm Attending</h2>
           <ul>
-            <li ng-repeat="event in getEvents">
-              {{event.event_id}}
+            <li ng-repeat="(index, event) in eventsImAttending track by $index">
+              <p class="title">{{event.eventname}}</p>
+              <p class="time"><i class="fa fa-calendar-o" aria-hidden="true"></i>{{event.timestamp.slice(0,10)}}</p>
+              <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>{{event.timestamp.slice(11,19)}}</p>
+              <p class="unjoin"><i class="fa fa-times" aria-hidden="true"></i><a href="" ng-click="unjoin(event, index)">Leave Event</a></p>
             </li>
           </ul>
-      </div>
-
-        <ul>
-          <li class="attending event-item" ng-repeat="event in events.eventsIgoTo"> 
-            <p class="title">{{event.eventname}}</p>
-            <p class="user"><i class="fa fa-user"></i>{{event.username}}</p>
-            <p class="time"><i class="fa fa-calendar-o" aria-hidden="true"></i>{{event.timestamp.slice(0,10)}}</p>
-            <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>{{event.timestamp.slice(11,19)}}</p>
-            <p class="unjoin"><i class="fa fa-times" aria-hidden="true"></i><a href="" ng-click="unjoinEvent({eventid: event.id})">Leave Event</a></p>
-
-        </ul>
       </div>
 
   </div>
@@ -97,19 +88,16 @@
 
   <div>
 
-  <div ng-controller="otherEventsCtrl" class="events-container"> 
+  <div ng-controller="otherEventsCtrl" class="events-container events-list"> 
 
     <h2>Other Events</h2>
-
-
-
-<!--       <li ng-repeat="event in events.list | reverse">
-        <p class="title">{{event.eventname}}</p>
-        <p class="user"><i class="fa fa-user"></i>{{event.username}}</p>
-        <p class="time"><i class="fa fa-calendar-o" aria-hidden="true"></i>{{event.timestamp.slice(0,10)}}</p>
-        <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>{{event.timestamp.slice(11,19)}}</p>
-        <button ng-click="join(event)"><span>Join</span></button>
-      </li> -->
+    
+    <li ng-repeat="(index, event) in otherEvents">
+      <p class="title">{{event.eventname}}</p>
+      <p class="time"><i class="fa fa-calendar-o" aria-hidden="true"></i>{{event.timestamp.slice(0,10)}}</p>
+      <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>{{event.timestamp.slice(11,19)}}</p>
+      <button ng-click="join(event, index)"><span>Join</span></button>
+    </li>
 
   </div>
 </div>
