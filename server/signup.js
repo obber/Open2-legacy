@@ -14,8 +14,9 @@ app.use(cors());
 router.post('/newuser', function(req, res) {
   var username = req.body.username;
   var password = req.body.password;
+  var imageUrl = req.body.imageUrl;
   var hashedPass = bcrypt.hashSync(password, 10);
-  var user = { username: username, password: hashedPass};
+  var user = { username: username, password: hashedPass, imageUrl: imageUrl};
   var helper = require('./helpers.js');
   helper.doesUserExist(username).then(function(resp){
     console.log('this is the resp', resp);
