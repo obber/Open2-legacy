@@ -116,20 +116,23 @@ angular
 };
 
 // new one, revert to old one if doesnt work.
-$scope.getEvents = [];
-Services.getEvents().then(function(response){
-  $scope.getEvents = response;
-  console.log('this is a users events', $scope.getEvents);
-});
+// $scope.getEvents = [];
+// Services.getEvents().then(function(response){
+//   $scope.getEvents = response;
+//   // console.log('this is a users events', $scope.getEvents);
+// });
 
 $scope.unjoinEvent = Services.unjoinEvent;
 
  Services.uploadFriendslist()
  .then(function(data){
     //console.log("friendslist i got from server ", data.data)
-    $scope.friends = data.data;
-    
+    $scope.friends = data.data; 
  });
+
+ $scope.getAllEvents = Services.getAllEvents();
+  $scope.getAllUserEvents = Services.getAllUserEvents();
+
 
 
   //this is our pop up dialog box

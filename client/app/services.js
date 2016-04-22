@@ -172,18 +172,37 @@ angular
 
   // get events a user has joiend
 
-  var getEvents = function(){
+  // var getEvents = function(){
+  //   var request = {
+  //     method: 'GET',
+  //     url: 'http://localhost:8080/dashboard/join'
+  //   };
+    
+  //   return $http(request).then(success, error);
+    
+  //   function success(response){
+  //     // console.log('these are all events: ', response);
+  //     return response.data.response.filter(function(item){
+  //       return item.user_id === Number(localStorage.userId);
+  //     });
+  //   }
+
+  //   function error(err){
+  //     console.log('this is an error: ', err);
+  //   }
+  // };
+
+  var getAllEvents = function(){
     var request = {
       method: 'GET',
-      url: 'http://localhost:8080/dashboard/join'
+      url: 'http://localhost:8080/dashboard/allEvents'
     };
     
     return $http(request).then(success, error);
     
     function success(response){
-      return response.data.response.filter(function(item){
-        return item.user_id === Number(localStorage.userId);
-      });
+      console.log('these are all events: ', response);
+      return response;
     }
 
     function error(err){
@@ -191,7 +210,23 @@ angular
     }
   };
 
+  var getAllUserEvents = function(){
+    var request = {
+      method: 'GET',
+      url: 'http://localhost:8080/dashboard/allUserEvents'
+    };
     
+    return $http(request).then(success, error);
+    
+    function success(response){
+      console.log('these are all user events: ', response);
+      return response;
+    }
+
+    function error(err){
+      console.log('this is an error: ', err);
+    }
+  };
 
 
    //remove the record of user from database// this isn't handled in the backend 
@@ -223,7 +258,8 @@ angular
       uploadFriendslist: uploadFriendslist,
       joinEvent: joinEvent,
       unjoinEvent: unjoinEvent,
-      getEvents: getEvents
+      getAllEvents: getAllEvents,
+      getAllUserEvents: getAllUserEvents
     };
 
   });
