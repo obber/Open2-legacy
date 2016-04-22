@@ -78,7 +78,7 @@ angular
 
       return $http({
         method: 'POST',
-        url: 'http://localhost:8080/dashboard/join',
+        url: 'http://localhost:5000/dashboard/join',
         data: request
       }).then(success,err);
 
@@ -98,7 +98,7 @@ angular
       console.log('this is event: ', event);
         return $http({
           method: 'POST',
-          url: 'http://localhost:8080/dashboard/unjoin',
+          url: 'http://localhost:5000/dashboard/unjoin',
           data: {
             eventId: event.id,
             userId: localStorage.userId
@@ -123,7 +123,7 @@ angular
     function getAllEvents() {
      var request = {
        method: 'GET',
-       url: 'http://localhost:8080/dashboard/allEvents'
+       url: 'http://localhost:5000/dashboard/allEvents'
      };
      
      return $http(request).then(success, error);
@@ -140,7 +140,7 @@ angular
     function getAllUserEvents() {
      var request = {
        method: 'GET',
-       url: 'http://localhost:8080/dashboard/allUserEvents'
+       url: 'http://localhost:5000/dashboard/allUserEvents'
      };
      
      return $http(request).then(success, error);

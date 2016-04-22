@@ -5,7 +5,7 @@ angular
   /// factory for get/post requests
   .factory('Services', function($http, $window, $location) {
     var username;
-    var baseUrl = 'http://localhost:8080/';
+    var baseUrl = 'http://localhost:5000/';
      // login
     var login = function(user) {
       var request={
@@ -105,7 +105,7 @@ angular
     var uploadDashboard = function() {
       return $http({
         method: 'GET',
-        url: 'http://localhost:8080/dashboard/upload',
+        url: 'http://localhost:5000/dashboard/upload',
       })
       .then(function(resp){
         //console.log("data in uploadDashboard", resp.data)
@@ -118,7 +118,7 @@ angular
     var notify = function(sendText){
       return $http({
         method: 'POST',
-        url: 'http://localhost:8080/dashboard',
+        url: 'http://localhost:5000/dashboard',
         data: sendText
       })
       .then(function(data){
@@ -136,7 +136,7 @@ angular
       //console.log('eventinfo inside events post', eventInfo);
       return $http({
         method: 'POST',
-        url: 'http://localhost:8080/dashboard/events',
+        url: 'http://localhost:5000/dashboard/events',
         data: eventInfo
       });
     };
@@ -145,7 +145,7 @@ angular
     var uploadFriendslist = function() {
       return $http ({
         method: 'GET',
-        url: 'http://localhost:8080/dashboard/friends'
+        url: 'http://localhost:5000/dashboard/friends'
       });
     };
 
@@ -155,7 +155,7 @@ angular
       // console.log('event is', event);
         return $http({
           method: 'POST',
-          url: 'http://localhost:8080/dashboard/join',
+          url: 'http://localhost:5000/dashboard/join',
           data: event
         }).then(success,err);
 
@@ -175,7 +175,7 @@ angular
   // var getEvents = function(){
   //   var request = {
   //     method: 'GET',
-  //     url: 'http://localhost:8080/dashboard/join'
+  //     url: 'http://localhost:5000/dashboard/join'
   //   };
     
   //   return $http(request).then(success, error);
@@ -195,7 +195,7 @@ angular
   var getAllEvents = function(){
     var request = {
       method: 'GET',
-      url: 'http://localhost:8080/dashboard/allEvents'
+      url: 'http://localhost:5000/dashboard/allEvents'
     };
     
     return $http(request).then(success, error);
@@ -213,7 +213,7 @@ angular
   var getAllUserEvents = function(){
     var request = {
       method: 'GET',
-      url: 'http://localhost:8080/dashboard/allUserEvents'
+      url: 'http://localhost:5000/dashboard/allUserEvents'
     };
     
     return $http(request).then(success, error);
@@ -234,7 +234,7 @@ angular
       console.log('this is eventId: ', eventId);
         return $http({
           method: 'POST',
-          url: 'http://localhost:8080/dashboard/unjoin',
+          url: 'http://localhost:5000/dashboard/unjoin',
           data: {
             eventId: eventId,
             userId: localStorage.userId
