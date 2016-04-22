@@ -5,6 +5,63 @@
 .bluebg {
   background-color: #105277; }
 
+/** initial setup **/
+.nano {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; }
+
+.nano > .nano-content {
+  position: absolute;
+  overflow: scroll;
+  overflow-x: hidden;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0; }
+
+.nano > .nano-content:focus {
+  outline: thin dotted; }
+
+.nano > .nano-content::-webkit-scrollbar {
+  display: none; }
+
+.has-scrollbar > .nano-content::-webkit-scrollbar {
+  display: block; }
+
+.nano > .nano-pane {
+  background: rgba(0, 0, 0, 0.25);
+  position: absolute;
+  width: 10px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  visibility: hidden\9;
+  /* Target only IE7 and IE8 with this hack */
+  opacity: .01;
+  -webkit-transition: .2s;
+  -moz-transition: .2s;
+  -o-transition: .2s;
+  transition: .2s;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px; }
+
+.nano > .nano-pane > .nano-slider {
+  background: #444;
+  background: rgba(0, 0, 0, 0.5);
+  position: relative;
+  margin: 0 1px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px; }
+
+.nano:hover > .nano-pane, .nano-pane.active, .nano-pane.flashed {
+  visibility: visible\9;
+  /* Target only IE7 and IE8 with this hack */
+  opacity: 0.99; }
+
 .no-scroll {
   overflow: hidden; }
 
@@ -204,17 +261,25 @@ input, button {
   top: 0px;
   position: fixed;
   height: 100%;
-  overflow: hidden;
   background-color: #ececec; }
+
+.nano {
+  background: #bba; }
+
+.nano .nano-content {
+  padding: 0; }
+
+.nano .nano-pane {
+  background: #888; }
+
+.nano .nano-slider {
+  background: #111; }
 
 #sidebar {
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  overflow-y: scroll;
-  box-sizing: content-box;
-  padding-right: 14px;
   padding-top: 85px; }
   #sidebar ul {
     padding: 0px; }
@@ -227,6 +292,8 @@ input, button {
     text-align: center;
     font-size: 40px;
     text-align: left; }
+  #sidebar .wrapper {
+    padding: 0 15px; }
 
 .new-event {
   background-color: #105277;
@@ -262,9 +329,21 @@ input, button {
   outline: 0; }
 
 .sidebar-to-expand {
-  padding-left: 12px; }
-  .sidebar-to-expand ul li {
-    list-style: none; }
+  padding: 14px;
+  max-height: 5000px;
+  opacity: 1;
+  transition: all 0.15s ease-out;
+  color: #2d2d2d;
+  background-color: #ddd; }
+  .sidebar-to-expand ul {
+    margin: 0; }
+    .sidebar-to-expand ul li {
+      list-style: none; }
+
+.sidebar-to-expand.ng-hide {
+  max-height: 0;
+  opacity: 0;
+  transition: all 0.15s ease-out; }
 
 .event-item * {
   margin: 0; }
@@ -277,6 +356,9 @@ input, button {
   font-weight: 700;
   font-size: 15px;
   margin: 15px 0 4px 0; }
+
+.event-item:first-child .title {
+  margin-top: 0; }
 
 .friends-list p {
   margin: 4px; }
@@ -354,7 +436,7 @@ input, button {
     box-shadow: 0 2px 0 0 #327022;
     text-shadow: 0 1px 0 #327022; }
   .auth-form button:hover {
-    background-color: #BAD7E8; }
+    background-color: #4B9C36; }
   .auth-form button:active {
     box-shadow: 0 -2px 0 #225216, inset 0 -2px 0 #fff;
     background-color: #327022; }
