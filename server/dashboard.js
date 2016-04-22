@@ -25,74 +25,6 @@ router.post('/events', function(request, response) {
     body: 'I am available to ' + event + " at " + timestamp
   });
 
-  //insert user inputevents into events and set event id to results.insertId
-  //query events table for this eventid and send id row to the front
-  //query users table for client username, and set id to rows[0].id
-  //insert this client and event into user events table.
-
-  //helper functions: 
-  //sendJSON
-  //getEventid
-  //getUserid
-  //addUserEvents(with eventid and userid)
-  
-  // function insertEvents(event, timestamp) {
-  //   return knex('events')
-  //   .insert({eventname : event, timestamp: timestamp});
-  //   .then(function(resp){
-  //     console.log('events inserted', resp);
-  //   })
-  // }
-
-  // function sendJSON(res, success, message, results) {
-  //   var response = {
-  //     success: success,
-  //     message: message
-  //     }
-
-  //   if (results) {
-  //     response.results = results;
-  //     }
-
-  //   res.json(response);
-  // }
-
-  // function getEventid(event,callback) {
-  //   return knex('Events')
-  //   .where(eventname : event)
-  //   .select(id)
-  //   .then(function(resp){
-  //     callback(resp.id);
-  //   })
-  // }
-
-  // function getUserid(username,callback){
-  //   return knex('Users')
-  //   .where('username',username)
-  //   .select(id)
-  //   .then(function(resp){
-  //     callback(resp.id);
-  //   })
-  // }
-
-  // function addUserEvents(userid , eventid , status) {
-  //   return knex('UserEvents')
-  //   .insert({user_id : userid, event_id: eventid, created_by: status})
-  //   .then(function(resp){
-  //     console.log('userid and eventid inserted into UserEvents table', resp);
-  //   })
-  // }  
-  
-  // insertEvents(event,timestamp)
-  // .then(function(resp){
-  //   console.log('events instered ', resp)
-  // }).catch(function(err){
-  //   console.log(err)
-  // })
-
-  // getUserid(username,function())
-
-
 
   db.query('INSERT INTO Events SET ?', events, function(err, results){
     if (err) {
@@ -207,27 +139,19 @@ router.post('/join', function(req, res){
       }
     })
   })
-  
+})
 
-  //db.query('SELECT id FROM Users WHERE `username` = ?;', [username], function(err, rows){
-  //   if(err){
-  //     throw err;
-  //   }else{
-  //     console.log("INSIDE JOIN POST",rows[0].id);
-  //     var userId = rows[0].id;
-  //     //is this really neccessary - - ? already have request.body. id 
-  //     db.query('SELECT event_id FROM UserEvents WHERE `id` = ?;', [id],function(err, rows){
-  //       if(err){
-  //         throw err;
-  //       }else{
-  //         console.log("INSIDE POST USEREVENts", rows[0].event_id);
-  //         console.log('this is database event id ' ,rows[0].event_id);
-  //         var eventId = rows[0].event_id;
-  //         addUserEvents(userId, eventId, false);
-  //       }
-  //     })
-  //   }
-  // })
+router.post('/unjoin',function(req,res){
+    var userEventId=req.body.eventid;
+    console.log('this is the request: ', req.body);
+    helper.removeUserEvent(userEventId).then(function(resp){
+      console.log('this is unjoin resp : ', resp);
+      res.json({
+        success : true,
+        message : 'You unjoined the event'
+      })
+
+    })
 })
 
 module.exports = router;
