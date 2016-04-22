@@ -60,7 +60,7 @@ function removeUserEvent(userEventId){
 function getAllUserevents(){
   return new Promise(function(resolve, reject){
     // console.log('this is the userid in helper:', userid);
-    db.query('SELECT * FROM UserEvents LEFT JOIN Events ON `UserEvents`.`event_id`=`Events`.`id`', function(err, query){
+    db.query('SELECT * FROM UserEvents', function(err, query){
       resolve(query);
     });
   });
