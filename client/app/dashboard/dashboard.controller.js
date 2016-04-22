@@ -45,8 +45,8 @@ angular
           'timestamp': item.timestamp,
           'username': item.username,
           'createdBy': item.created_by,
-          'status': 'unjoin'
-        });
+          'status': 'unjoin',
+          });
       }
       else if (item.username=== localStorage.getItem('username') && item.created_by ===1 ) {
         myEvents.push({

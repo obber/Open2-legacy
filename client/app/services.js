@@ -22,7 +22,7 @@ angular
         //store both.
         console.log('inside login front end', " ", resp);
         if(resp.data.token){
-          saveUserInfo(resp.data.username,resp.data.token,resp.data.firebaseToken);
+          saveUserInfo(resp.data.username,resp.data.token,resp.data.firebaseToken,resp.data.user_id);
           $location.path('/dashboard');
         }
         console.log(resp);
@@ -30,10 +30,11 @@ angular
       }
 
       function err(err){
+        console.log('this is err',err);
         $location.path('/login');
         return console.log(err);
-        }
-      };
+      }
+    };
 
     // logout
       var logout = function(){
@@ -45,36 +46,47 @@ angular
 
     // signup
       var signup = function(user) {
+<<<<<<< Updated upstream
         var request = {
         method : 'POST',
         url : baseUrl+'signup/newuser',
         data : user
       };
+=======
+        var request= {
+          method : 'POST',
+          url : baseUrl+'signup/newuser',
+          data : user
+        };
+>>>>>>> Stashed changes
       
       return $http(request).then(success, err);
       
       function success(resp){
-        console.log('inside signup', resp)
+        console.log('inside signup ******************', resp.data.user_id)
         if(resp.data){
-          saveUserInfo(resp.data.token);
-          saveUserInfo(resp.data.username);
-          saveUserInfo(resp.data.firebaseToken);
+          console.log('this is resp.data',resp.data.user_id);
+
+          //saveUserInfo(resp.data.username,resp.data.token,resp.data.firebaseToken,resp.data.user_id);
+
           $location.path('/login');
         }
         return resp;
       }
 
       function err(err){
+        console.log('inside err');
         $location.path('/');
         return console.log(err);
         }
       }
 
-      function saveUserInfo(username,token,firebaseToken){
+      function saveUserInfo(username,token,firebaseToken,userid){
         //need to add firebase token in parameter
         $window.localStorage['username'] =username;
         $window.localStorage['jwtToken'] = token;
         $window.localStorage['firebaseToken'] = firebaseToken;
+        $window.localStorage['userId'] = userid;
         //need to locate firebase token in local storage
       }
 
@@ -84,6 +96,14 @@ angular
 
       function getUserName(){
         return $window.localStorage['username'];
+      }
+
+      function getuserid(){
+        return $window.localStorage['userId'];
+      }
+
+      function getfirebaseToken(){
+        return $window.localStorage['firebaseToken'];
       }
      //need to get firebase token from local storage
      
