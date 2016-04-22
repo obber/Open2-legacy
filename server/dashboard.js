@@ -14,6 +14,8 @@ router.post('/events', function(request, response) {
   var event = request.body.event;
   var timestamp = request.body.time;
   var username = request.body.username;
+  
+  console.log('this is eventsbody',request.body);
 
   var events = {eventname: event, timestamp: timestamp};
 
@@ -88,19 +90,11 @@ router.get('/friends', function(request, response){
     if(err){
       throw err;
     }else{
-      // console.log("friends list from db", results);
-      response.send(results);
+  response.send(results);
     }
   })
 })
 
-//need to make function grabbing body username
-//query user table for this username and get ID
-//query userevents table for body event id, set event id to event id from userevents table
-//insert userid, join event id into user events table
-//what's the point of this? 
-//todo: need to understand what this post is doing
-//helper functions:
 router.post('/join', function(req, res){
   var username = req.body.user;
   var eventid = req.body.eventId;
@@ -126,7 +120,7 @@ router.post('/join', function(req, res){
           });
     } else {
       console.log('inside join else');
-      helper.insertEvent(userid,eventid,false)
+      helper.insertEvent(userid,eventid,false,date)
       .then(function(){
         res.json({
           username : username,

@@ -14,10 +14,12 @@ app.use(cors());
 router.post('/homepage', function(req, res){
   var username = req.body.username;
   var password = req.body.password;
-
+  var uid;
   helper.auth(username, password).then(function(resp){
     var result = false;
     if(resp[0].username===username && bcrypt.compareSync(password, resp[0].password)){
+        uid=resp[0].id;
+        console.log('uid*******',uid);
         result = true;
       
       }
@@ -25,6 +27,7 @@ router.post('/homepage', function(req, res){
       console.log(resp[0])
       res.json({
           username : username,
+          user_id : uid,
           success : true,
           message : 'you are logged in',
           token : auth.genToken(resp[0]),
