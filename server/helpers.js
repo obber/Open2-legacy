@@ -40,7 +40,7 @@ function checkUserEvent(userid,eventid,status){
   })
 }
 
-function insertEvent(userid, eventid, status){
+function insertEvent(userid, eventid, status,date){
   return new Promise(function(resolve, reject){
     db.query('INSERT INTO UserEvents (`user_id`,`event_id`,`created_by`) VALUES ('+userid+', '+eventid+', '+status+');', function(err,query){
       resolve(query);
