@@ -322,6 +322,20 @@ input, button {
   background-color: #fff;
   width: 100%; }
 
+.expand-title {
+  background-color: #d0d0d0;
+  color: #2d2d2d;
+  padding: 10px;
+  border-radius: 3px; }
+  .expand-title .fa:first-child {
+    margin: 0 8px;
+    color: #6d6d6d; }
+  .expand-title .fa:nth-child(2) {
+    margin-right: 3px; }
+
+.expand-title:hover {
+  background-color: #dfdfdf; }
+
 .expand-title:hover {
   cursor: pointer; }
 
@@ -329,12 +343,10 @@ input, button {
   outline: 0; }
 
 .sidebar-to-expand {
-  padding: 14px;
   max-height: 5000px;
   opacity: 1;
   transition: all 0.15s ease-out;
-  color: #2d2d2d;
-  background-color: #ddd; }
+  color: #2d2d2d; }
   .sidebar-to-expand ul {
     margin: 0; }
     .sidebar-to-expand ul li {
@@ -355,13 +367,21 @@ input, button {
 .event-item .title {
   font-weight: 700;
   font-size: 15px;
-  margin: 15px 0 4px 0; }
+  margin: 0 0 4px 0; }
 
 .event-item:first-child .title {
   margin-top: 0; }
 
-.friends-list p {
-  margin: 4px; }
+.my-event {
+  padding: 20px 24px; }
+
+.friend, .my-event {
+  border-bottom: 1px solid #ccc; }
+
+.friend {
+  margin: 0;
+  text-align: center;
+  padding: 8px 0; }
 
 .sidebar-events-attending ul li {
   list-style: none; }
@@ -607,11 +627,12 @@ md-backdrop.md-opaque.ng-enter-active {
 
 #chat {
   width: 100%;
-  background-color: #ddd; }
+  background-color: #fff; }
 
 #messageContainer {
   height: 500px;
-  overflow: auto; }
+  overflow: auto;
+  box-shadow: inset 0 0 8px 0 rgba(0, 0, 0, 0.4); }
 
 .message-single {
   padding: 15px 25px; }
@@ -624,7 +645,7 @@ md-backdrop.md-opaque.ng-enter-active {
     font-size: 14px; }
 
 .message-single:nth-child(even) {
-  background-color: #eee; }
+  background-color: rgba(0, 0, 0, 0.05); }
 
 .message-input-container {
   background-color: #105277;
