@@ -23,7 +23,7 @@
             'fa-angle-down' : !toggled1,
             'fa-angle-up'   : toggled1
           }" aria-hidden="true"></i>
-          <i class="fa fa-user"></i>&nbsp;Friends</p>
+          <i class="fa fa-user"></i>&nbsp;All Friends</p>
         </div>
         <div ng-show="expand1" class="sidebar-to-expand friends-list">
           <p class="friend" ng-repeat='friend in friends | filter: userFilter'>{{friend.username}}</p>
@@ -37,13 +37,13 @@
             'fa-angle-down' : !toggled2,
             'fa-angle-up'   : toggled2
           }" aria-hidden="true"></i>
-          <i class="fa fa-shopping-bag" aria-hidden="true"></i></i>&nbsp;My Events</p>
+          <i class="fa fa-shopping-bag" aria-hidden="true"></i></i>&nbsp;Events I'm Hosting</p>
         </div>
         <div ng-show="expand2" class="sidebar-to-expand">
           <ul>
               <li class="my-event event-item" ng-repeat="event in events.eventsIgoTo | filter: myEventFilter"> 
                 <p class="title">{{event.eventname}}</p>
-                <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>{{event.timestamp.slice(0,10)}}<span> {{event.timestamp.slice(10,19)}}</span> </p>
+                <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>{{event.timestamp.slice(0,10)}}<span>{{event.timestamp.slice(10,19)}}</span></p>
                 <p class="user"> <i class="fa fa-user"></i>{{event.username}} </p>
                 <p class="unjoin"><i class="fa fa-times" aria-hidden="true"></i><a href="">Remove Event</a></p>
               </li>
@@ -60,72 +60,15 @@
           </ul>
       </div>
 
+        <ul>
+          <li class="attending event-item" ng-repeat="event in events.eventsIgoTo"> 
+            <p class="title">{{event.eventname}}</p>
+            <p class="user"><i class="fa fa-user"></i>{{event.username}}</p>
+            <p class="time"><i class="fa fa-calendar-o" aria-hidden="true"></i>{{event.timestamp.slice(0,10)}}</p>
+            <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>{{event.timestamp.slice(11,19)}}</p>
+            <p class="unjoin"><i class="fa fa-times" aria-hidden="true"></i><a href="" ng-click="unjoinEvent({eventid: event.id})">Leave Event</a></p>
 
-        <!-- Attending Events List -->
-        <!-- Jessica, do the NG repeat here for a list of all events I am attending. -->
-
-        <!-- <ul> -->
-          <!-- <li class="attending event-item" ng-repeat="event in events.eventsIgoTo">  -->
-            <!-- <p class="title"> {{event.eventname}} </p> -->
-        <!--     <p class="user"><i class="fa fa-user"></i> {{event.username}} </p> -->
-            <!-- <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>{{event.timestamp.slice(0,10)}}<span>{{event.timestamp.slice(10,19)}}</span> </p>        -->
-            <!-- <p class="unjoin"><i class="fa fa-times" aria-hidden="true"></i><a href="" ng-click="unjoinEvent({eventid: event.id})">Leave Event</a></p> -->
-
-          <!-- </li> -->
-        <!-- </ul> -->
-
-         <!--  <li class="attending event-item">
-            <p class="title">Drinks</p>
-            <p class="user"><i class="fa fa-user"></i>Kan</p>
-            <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>08:00:00 PM</p>
-            <p class="unjoin"><i class="fa fa-times" aria-hidden="true"></i><a href="">Remove Event</a></p>
-          </li>
-          <li class="attending event-item">
-            <p class="title">JAYZUSS</p>
-            <p class="user"><i class="fa fa-user"></i>Annie</p>
-            <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>08:00:00 PM</p>
-            <p class="unjoin"><i class="fa fa-times" aria-hidden="true"></i><a href="">Unjoin</a></p>
-          </li>
-          <li class="attending event-item">
-            <p class="title">TurnUPPPP!</p>
-            <p class="user"><i class="fa fa-user"></i>Jessica</p>
-            <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>08:00:00 PM</p>
-            <p class="unjoin"><i class="fa fa-times" aria-hidden="true"></i><a href="">Unjoin</a></p>
-          </li>
-          <li class="attending event-item">
-            <p class="title">"Okay Fine"</p>
-            <p class="user"><i class="fa fa-user"></i>Rich-ter</p>
-            <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>08:00:00 PM</p>
-            <p class="unjoin"><i class="fa fa-times" aria-hidden="true"></i><a href="">Unjoin</a></p>
-          </li> -->
-
-
-      
-
-
-      <h2>Below this is the original code.</h2>
-
-      <div ng-if='events.fetch'>
-
-        <li ng-repeat="event in events.list | reverse" style = "list-style: none">
-          <span style = "font-weight: bold">{{event.username}} wants to {{ event.eventname}}</span>
-          <span>{{event.timestamp.slice(11, 19)}}</span>
-          <md-button ng-click="join(event)" class="md-warn md-raised md-hue-2 font"> {{event.status}} </md-button>
-        </li>
-
-      </div>
-
-      <!-- Notification Box -->
-<!--       <div ng-if='events.fetch'>
-
-        <h1 class="sidebar-title">Attending</h1>
-        {{event}}
-        <li ng-repeat="event in events.eventsIgoTo | reverse" style = "list-style: none">
-          <span style = "font-weight: bold"> I want to {{ event.eventname}} </span>
-          <span> {{event.timestamp.slice(11, 19)}}  </span>
-          <md-button ng-click="join(event)" class="md-warn md-raised md-hue-2 font"> {{event.status}} </md-button>
-        </li>
- -->
+        </ul>
       </div>
 
   </div>
@@ -154,4 +97,19 @@
 
   <div>
 
+  <div ng-controller="otherEventsCtrl" class="events-container"> 
+
+    <h2>Other Events</h2>
+
+
+
+<!--       <li ng-repeat="event in events.list | reverse">
+        <p class="title">{{event.eventname}}</p>
+        <p class="user"><i class="fa fa-user"></i>{{event.username}}</p>
+        <p class="time"><i class="fa fa-calendar-o" aria-hidden="true"></i>{{event.timestamp.slice(0,10)}}</p>
+        <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>{{event.timestamp.slice(11,19)}}</p>
+        <button ng-click="join(event)"><span>Join</span></button>
+      </li> -->
+
+  </div>
 </div>
