@@ -85,6 +85,26 @@
   width: 100%;
 }
 
+.expand-title {
+  background-color: #d0d0d0;
+  color: #2d2d2d;
+  padding: 10px;
+  border-radius: 3px;
+  
+  .fa:first-child {
+    margin: 0 8px;
+    color: #6d6d6d;
+  }
+
+  .fa:nth-child(2) {
+    margin-right: 3px;
+  }
+}
+
+.expand-title:hover {
+  background-color: #dfdfdf;
+}
+
 .expand-title:hover {
   cursor: pointer;
 }
@@ -94,12 +114,10 @@
 }
 
 .sidebar-to-expand {
-  padding: 14px;
   max-height: 5000px;
   opacity: 1;
   transition: all 0.15s ease-out;
   color: #2d2d2d;
-  background-color: #ddd;
 
   ul {
     margin: 0;
@@ -117,7 +135,7 @@
 }
 
 .event-item {
-  
+
   * {
     margin: 0;
   }
@@ -130,7 +148,7 @@
   .title {
     font-weight: 700;
     font-size: 15px;
-    margin: 15px 0 4px 0;
+    margin: 0 0 4px 0;
   }
 }
 
@@ -138,10 +156,18 @@
   margin-top: 0;
 }
 
-.friends-list {
-  p {
-    margin: 4px;
-  }
+.my-event {
+  padding: 20px 24px;
+}
+
+.friend, .my-event {
+  border-bottom: 1px solid #ccc;
+}
+
+.friend {
+  margin: 0;
+  text-align: center;
+  padding: 8px 0;
 }
 
 .sidebar-events-attending {
