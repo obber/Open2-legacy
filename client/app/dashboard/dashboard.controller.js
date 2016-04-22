@@ -33,7 +33,7 @@ angular
     var myEvents = [];
     var eventsToJoin = [];
 
-      //creating list of the events that current user attends or created himself
+      // creating list of the events that current user attends or created himself
     data.forEach(function(item) {
       //console.log('this is an event item: ', item);
       // console.log('this is myevents array: ', myEvents);
@@ -62,9 +62,9 @@ angular
     });
 
 
-     //creating the list of events that are created by the user's friends, but aren't joined by the user
+     // creating the list of events that are created by the user's friends, but aren't joined by the user
     data.forEach(function(item) {
-     if (item.username!== localStorage.getItem('username') && item.created_by === 1) {
+     if (item.username !== localStorage.getItem('username') && item.created_by === 0) {
        eventsToJoin.push({
         'eventname': item.eventname,
         'id': item.id,
@@ -77,7 +77,6 @@ angular
     });
 
   $scope.events.list = eventsToJoin;
-  console.log('eventsToJoin', eventsToJoin);
   $scope.events.eventsIgoTo = myEvents;
 
 
@@ -89,15 +88,28 @@ angular
  
  // join or unjoin event
 
- $scope.join = function(id, status) {
+ $scope.join = function(event) {
+  console.log('event =', event);
+  // console.log('id =',id, 'status=', status)
      //join
-  if(status === 'join') {
+  console.log('event.status', event.status)
+  if (event.status === 'join') {
+
     var joinInfo = {
-      'eventId': id,
+      'eventname': event.eventname,
+      'timestamp': event.timestamp,
+      'username': event.username,
+      'createdBy': event.createdBy,
+      'eventId': event.id,
       'user': localStorage.getItem('username')
     };
-    Services.joinEvent(joinInfo);
-    $route.reload();
+    
+    Services
+    .joinEvent(joinInfo, $scope.events.eventsIgoTo)
+    .then(function() {
+      console.log('eventsIgoto', $scope.events.eventsIgoTo);
+    })
+    // $route.reload();
   }
 };
 // unjoin event
