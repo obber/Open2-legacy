@@ -106,20 +106,23 @@ angular
     
     Services
     .joinEvent(joinInfo, $scope.events.eventsIgoTo)
-    .then(function() {
-      console.log('eventsIgoto', $scope.events.eventsIgoTo);
-    })
+    .then(function(resp) {
+      console.log('event resp', resp);
+      // console.log('eventsIgoto', $scope.events.eventsIgoTo);
+      $scope.getEvents.push(resp.data);
+    });
     // $route.reload();
   }
 };
-// unjoin event
 
-// $scope.unjoinEvent = function(eventObj){
-//   Services.unjoinEvent(eventObj);
-// };
+// new one, revert to old one if doesnt work.
+$scope.getEvents = [];
+Services.getEvents().then(function(response){
+  $scope.getEvents = response;
+  console.log('this is a users events', $scope.getEvents);
+});
 
-$scope.unjoinEvent = Services.unjoinEvent
-// Services.unjoinEvent;
+$scope.unjoinEvent = Services.unjoinEvent;
 
  Services.uploadFriendslist()
  .then(function(data){
@@ -153,7 +156,7 @@ $scope.unjoinEvent = Services.unjoinEvent
       'event' : $scope.user.activity,
       'time' : $scope.time.value,
       'username': localStorage.getItem('username')
-    }
+    };
      
     Services.eventsPost(eventInfo)
     .then(function(respData){
