@@ -54,12 +54,12 @@ router.post('/events', function(request, response) {
       })
     }
   });
-})
+});
 
 //insert body.user and eventid, and status into userEvents table
 var addUserEvents = function(creator, eventId, status){
   var userEvents = {user_id: creator, event_id: eventId, created_by: status};
-  console.log(userEvents)
+  console.log(userEvents);
   db.query('INSERT INTO UserEvents SET ?', userEvents, function(err, results){
     if (err) {
       console.log(err);
@@ -67,7 +67,7 @@ var addUserEvents = function(creator, eventId, status){
       console.log("Add User Events", results);
     }
   });
-}
+};
 
 //upon get upload, sending the whole row of username, eventname, timestamp, etc.... omg
 router.get('/upload', function(request, response){
@@ -92,8 +92,8 @@ router.get('/friends', function(request, response){
     }else{
   response.send(results);
     }
-  })
-})
+  });
+});
 
 router.post('/join', function(req, res){
   var username = req.body.user;
@@ -112,15 +112,13 @@ router.post('/join', function(req, res){
     })
   .then(function(resp){
     if(resp.length !== 0){
-      console.log('inside join if');
       res.json({
           username : username,
           success : false,
-          message : 'that event already exist!'
+          message : 'that event already exists!'
           });
     } else {
-      console.log('inside join else');
-      helper.insertEvent(userid,eventid,false,date)
+      helper.insertEvent(userid,eventid,false)
       .then(function(){
         res.json({
           username : username,
@@ -128,12 +126,24 @@ router.post('/join', function(req, res){
           eventid: eventid,
           success : true,
           message : 'you joined the event'
-          })
+          });
         });
       }
-    })
-  })
-})
+    });
+  });
+});
+
+router.get('/join', function(req, res){
+  helper.getAllUserevents().then(function(response){
+    console.log(response);
+    res.json({
+      success : true,
+      response: response,
+      message: 'data attached'
+    });
+  });
+});
+
 
 router.post('/unjoin',function(req,res){
     var userEventId=req.body.eventid;
@@ -143,9 +153,9 @@ router.post('/unjoin',function(req,res){
       res.json({
         success : true,
         message : 'You unjoined the event'
-      })
+      });
 
-    })
-})
+    });
+});
 
 module.exports = router;
