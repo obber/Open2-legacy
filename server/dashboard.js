@@ -133,16 +133,16 @@ router.post('/join', function(req, res){
   });
 });
 
-router.get('/join', function(req, res){
-  helper.getAllUserevents().then(function(response){
-    console.log(response);
-    res.json({
-      success : true,
-      response: response,
-      message: 'data attached'
-    });
-  });
-});
+// router.get('/join', function(req, res){
+//   helper.getAllUserevents().then(function(response){
+//     // console.log(response);
+//     res.json({
+//       success : true,
+//       response: response,
+//       message: 'data attached'
+//     });
+//   });
+// });
 
 
 router.post('/unjoin',function(req,res){
@@ -154,8 +154,37 @@ router.post('/unjoin',function(req,res){
         success : true,
         message : 'You unjoined the event'
       });
-
     });
 });
+
+// new route for Kan
+
+router.get('/allEvents', function(req, res){
+  var allUserEvents;
+  var allEvents;
+  helper.getAllEvents().then(function(response){
+    console.log('all events response: ', response);
+    // allEvents = response.data.response;
+    res.json({
+      success : true,
+      response: response,
+      message: 'data attached'
+    });
+  });
+});
+
+
+router.get('/allUserEvents', function(req, res){
+  helper.getAllUserEvents().then(function(response){
+    // console.log('all events response: ', response);
+    // allEvents = response.data.response;
+    res.json({
+      success : true,
+      response: response,
+      message: 'data attached'
+    });
+  });
+});
+
 
 module.exports = router;

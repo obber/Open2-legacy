@@ -57,10 +57,22 @@ function removeUserEvent(userEventId){
   });
 }
 
-function getAllUserevents(){
+function getAllUserEvents(){
   return new Promise(function(resolve, reject){
     // console.log('this is the userid in helper:', userid);
     db.query('SELECT * FROM UserEvents', function(err, query){
+
+      resolve(query);
+    });
+  });
+}
+
+function getAllEvents(){
+  return new Promise(function(resolve, reject){
+    // console.log('this is the userid in helper:', userid);
+    db.query('SELECT * FROM Events', function(err, query){
+      console.log('this is error: ', err);
+      console.log('this is query: ', query);
       resolve(query);
     });
   });
@@ -97,5 +109,6 @@ module.exports= {
   insertEvent : insertEvent,
   checkUserEvent : checkUserEvent,
   removeUserEvent : removeUserEvent,
-  getAllUserevents : getAllUserevents
+  getAllUserEvents : getAllUserEvents,
+  getAllEvents: getAllEvents
 };
