@@ -35,6 +35,8 @@ angular
 
       //creating list of the events that current user attends or created himself
     data.forEach(function(item) {
+      //console.log('this is an event item: ', item);
+      // console.log('this is myevents array: ', myEvents);
       if(item.username===localStorage.getItem('username') && item.created_by === 0) {
         myEvents.push(
          {
@@ -97,13 +99,15 @@ angular
     Services.joinEvent(joinInfo);
     $route.reload();
   }
-   //unjoin
-  else if(status === 'unjoin') {
-  
-  // delete the record about user's attendance from database
-   Services.unjoinEvent(id); // this doesn't work for come reason.
-  }
 };
+// unjoin event
+
+// $scope.unjoinEvent = function(eventObj){
+//   Services.unjoinEvent(eventObj);
+// };
+
+$scope.unjoinEvent = Services.unjoinEvent
+// Services.unjoinEvent;
 
  Services.uploadFriendslist()
  .then(function(data){

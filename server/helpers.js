@@ -48,6 +48,13 @@ function insertEvent(userid, eventid, status){
   })
 }
 
+function removeUserEvent(userEventId){
+  return new Promise(function(resolve, reject){
+    db.query('DELETE FROM UserEvents Where `id`= ?;',[userEventId], function(err,query){
+      resolve(query);
+    })
+  })
+}
 
 module.exports= {
   doesUserExist : doesUserExist,
@@ -55,5 +62,6 @@ module.exports= {
   auth : auth,
   getUserId : getUserId,
   insertEvent : insertEvent,
-  checkUserEvent : checkUserEvent
+  checkUserEvent : checkUserEvent,
+  removeUserEvent : removeUserEvent
 }
