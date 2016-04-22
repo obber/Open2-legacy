@@ -22,10 +22,11 @@
           <p ng-click="toggleExpand(1)" class="expand-title"><i class="fa" ng-class="{
             'fa-angle-down' : !toggled1,
             'fa-angle-up'   : toggled1
-          }" aria-hidden="true"></i>&nbsp;<i class="fa fa-user"></i>&nbsp;Friends</p>
+          }" aria-hidden="true"></i>
+          <i class="fa fa-user"></i>&nbsp;Friends</p>
         </div>
         <div ng-show="expand1" class="sidebar-to-expand friends-list">
-          <p ng-repeat='friend in friends | filter: userFilter'>{{friend.username}}</p>
+          <p class="friend" ng-repeat='friend in friends | filter: userFilter'>{{friend.username}}</p>
         </div>
       </div>
 
@@ -35,13 +36,14 @@
           <p ng-click="toggleExpand(2)" class="expand-title"><i class="fa" ng-class="{
             'fa-angle-down' : !toggled2,
             'fa-angle-up'   : toggled2
-          }" aria-hidden="true"></i>&nbsp;<i class="fa fa-user"></i>&nbsp;My Events</p>
+          }" aria-hidden="true"></i>
+          <i class="fa fa-shopping-bag" aria-hidden="true"></i></i>&nbsp;My Events</p>
         </div>
         <div ng-show="expand2" class="sidebar-to-expand">
           <ul>
               <li class="my-event event-item" ng-repeat="event in events.eventsIgoTo | filter: myEventFilter"> 
-                <p class="title"> {{event.eventname}} </p>
-                <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i> {{event.timestamp.slice(0,10)}} <span> {{event.timestamp.slice(10,19)}}</span> </p>       
+                <p class="title">{{event.eventname}}</p>
+                <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>{{event.timestamp.slice(0,10)}}<span> {{event.timestamp.slice(10,19)}}</span> </p>
                 <p class="user"> <i class="fa fa-user"></i>{{event.username}} </p>
                 <p class="unjoin"><i class="fa fa-times" aria-hidden="true"></i><a href="">Remove Event</a></p>
               </li>
@@ -49,7 +51,7 @@
         </div>
       </div>
       
-      <div class="sidebar-events-attending">
+      <div class="sidebar-events-attending wrapper">
         <h2>Events I'm Attending</h2>
 
         <!-- Attending Events List -->
@@ -58,7 +60,7 @@
           <li class="attending event-item" ng-repeat="event in events.eventsIgoTo"> 
             <p class="title"> {{event.eventname}} </p>
         <!--     <p class="user"><i class="fa fa-user"></i> {{event.username}} </p> -->
-            <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i> {{event.timestamp.slice(0,10)}} <span> {{event.timestamp.slice(10,19)}}</span> </p>       
+            <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>{{event.timestamp.slice(0,10)}}<span>{{event.timestamp.slice(10,19)}}</span> </p>       
             <p class="unjoin"><i class="fa fa-times" aria-hidden="true"></i><a href="" ng-click="unjoinEvent({eventid: event.id})">Leave Event</a></p>
 
           </li>
@@ -135,6 +137,7 @@
         <div class="message-input-container">
           <div class="input-container">
             <input type="text" id="messageInput" placeholder="Enter message here">
+            <i ng-click="addThumb()" class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i>
           </div>
           <div class="button-container">
             <button id='submit'><i class="fa fa-paper-plane" aria-hidden="true"></i>Submit</button>
