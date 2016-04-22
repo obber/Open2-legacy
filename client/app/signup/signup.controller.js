@@ -15,8 +15,10 @@ angular
 
     var user = {
       username: $scope.username,
-      password: $scope.password
+      password: $scope.password,
+      imageUrl: $scope.imageUrl
     };
+
     Services.signup(user);
   };
 

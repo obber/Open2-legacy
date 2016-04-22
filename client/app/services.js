@@ -45,7 +45,7 @@ angular
 
     // signup
       var signup = function(user) {
-        var request= {
+        var request = {
         method : 'POST',
         url : baseUrl+'signup/newuser',
         data : user

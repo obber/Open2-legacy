@@ -7,18 +7,28 @@
 
       $scope.username = localStorage.username;
 
+      $scope.addThumb = function() {
+        //FIELD VALUES
+        var username = localStorage.username;
+        var message = ':thumbsup:';  
+
+        //SAVE DATA TO FIREBASE AND EMPTY FIELD
+        var timeString = Date.parse(new Date()).toString();
+        ref.push({name:username, text:message, time: timeString });
+        messageField.val('');
+      }
+
       // chat message input resize
       $(function() {
         $("#messageInput");
       })
 
       // REGISTER DOM ELEMENTS
-      console.log('registering');
       var messageField = $('#messageInput');
       var messageList = $('#messageContainer');
 
       // LISTEN FOR KEYPRESS EVENT
-      messageField.keypress(function (e) {
+      messageField.keypress(function(e) {
         if ( e.keyCode == 13 ) {
           //FIELD VALUES
           var username = localStorage.username;
@@ -32,8 +42,8 @@
             ref.push({name:username, text:message, time: timeString });
             messageField.val('');
           }
-         }
-        });
+        }
+      });
 
       $('#submit').on("click", function(){ 
         //FIELD VALUES
@@ -69,6 +79,8 @@
           nameElement.text(username + ': ');
           timeElement.text(moment(time).format("ddd, h:mm:ss a"));
           messageElement.text(message);
+
+          emojify.run(messageElement[0]);
 
           singleMessage.prepend(nameElement).append(timeElement).append(messageElement);
 

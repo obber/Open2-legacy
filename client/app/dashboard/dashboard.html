@@ -60,7 +60,7 @@
           <li class="attending event-item" ng-repeat="event in events.eventsIgoTo"> 
             <p class="title"> {{event.eventname}} </p>
         <!--     <p class="user"><i class="fa fa-user"></i> {{event.username}} </p> -->
-            <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>{{event.timestamp.slice(0,10)}}<span> {{event.timestamp.slice(10,19)}}</span> </p>       
+            <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>{{event.timestamp.slice(0,10)}}<span>{{event.timestamp.slice(10,19)}}</span> </p>       
             <p class="unjoin"><i class="fa fa-times" aria-hidden="true"></i><a href="" ng-click="unjoinEvent({eventid: event.id})">Leave Event</a></p>
 
           </li>
@@ -137,6 +137,7 @@
         <div class="message-input-container">
           <div class="input-container">
             <input type="text" id="messageInput" placeholder="Enter message here">
+            <i ng-click="addThumb()" class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i>
           </div>
           <div class="button-container">
             <button id='submit'><i class="fa fa-paper-plane" aria-hidden="true"></i>Submit</button>

@@ -12,5 +12,9 @@ angular
 // from kan, to kan.
 $(".nano").nanoScroller();
 
+emojify.setConfig({
+  img_dir: 'bower_components/emojify.js/dist/images/basic',  
+});
+
 })();
 

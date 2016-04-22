@@ -83,12 +83,17 @@
     width: 82%;
     display: inline-block;
     vertical-align: top;
-
-    .chat-user {
+  
+    .fa {
       position: absolute;
-      top: 8px;
-      left: 12px;
-      color: $darkgray;
+      top: 11px;
+      right: 13px;
+      color: #7D9EB3;
+      cursor: pointer;
+    }
+
+    .fa-hover {
+      color: #497087;
     }
   }
 

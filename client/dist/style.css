@@ -83,6 +83,12 @@ button:active {
   height: 100%;
   vertical-align: middle; }
 
+.emoji {
+  width: 1.5em;
+  height: 1.5em;
+  display: inline-block;
+  margin-bottom: -0.25em; }
+
 * {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -586,7 +592,8 @@ md-backdrop.md-opaque.ng-enter-active {
     background-color: #E64E60;
     color: #fff;
     box-shadow: 0 2px 0 0 #BD3545;
-    margin-bottom: 30px;
+    margin-top: 30px;
+    margin-bottom: 10px;
     text-shadow: 0 1px 0 #BD3545; }
   .new-event-modal button:hover {
     background-color: #ED6878; }
@@ -685,11 +692,14 @@ md-backdrop.md-opaque.ng-enter-active {
     width: 82%;
     display: inline-block;
     vertical-align: top; }
-    .message-input-container .input-container .chat-user {
+    .message-input-container .input-container .fa {
       position: absolute;
-      top: 8px;
-      left: 12px;
-      color: #777; }
+      top: 11px;
+      right: 13px;
+      color: #7D9EB3;
+      cursor: pointer; }
+    .message-input-container .input-container .fa-hover {
+      color: #497087; }
   .message-input-container .button-container {
     width: 15%;
     float: right;
