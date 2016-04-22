@@ -59,7 +59,7 @@
             <p class="title"> {{event.eventname}} </p>
         <!--     <p class="user"><i class="fa fa-user"></i> {{event.username}} </p> -->
             <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i> {{event.timestamp.slice(0,10)}} <span> {{event.timestamp.slice(10,19)}}</span> </p>       
-            <p class="unjoin"><i class="fa fa-times" aria-hidden="true"></i><a href="">Leave Event</a></p>
+            <p class="unjoin"><i class="fa fa-times" aria-hidden="true"></i><a href="" ng-click="unjoinEvent({eventid: event.id})">Leave Event</a></p>
 
           </li>
 

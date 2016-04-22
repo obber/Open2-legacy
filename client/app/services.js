@@ -160,11 +160,20 @@ angular
 
      //remove the record of user from database// this isn't handled in the backend 
       var unjoinEvent = function(userEventId) {
+        console.log('this is userEventID: ', userEventId);
           return $http({
              method: 'POST',
              url: 'http://localhost:8080/dashboard/unjoin',
              data: userEventId
-          });
+          }).then(success,err);
+
+          function success(resp){
+            console.log(resp);
+          }
+
+          function err(err){
+            console.log('this is the error: ', err);
+          }
       };
 
       return {
